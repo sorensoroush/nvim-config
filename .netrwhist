@@ -1,6 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =4
-let g:netrw_dirhist_4='/home/soren-wsltp/college-files/2024-fall/csci-150/lectures'
-let g:netrw_dirhist_3='/home/soren-wsltp/college-files/2024-fall/csci-150'
-let g:netrw_dirhist_2='/home/soren-wsltp/programming-practice'
+let g:netrw_dirhistcnt =1
 let g:netrw_dirhist_1='/home/soren-wsltp/.config/nvim'
+let g:netrw_dirhist_0='/home/soren-wsltp/.config'
+let g:netrw_dirhist_9='/home/soren-wsltp'
+let g:netrw_dirhist_8='/home'
+let g:netrw_dirhist_7='/home/soren-wsltp'
+let g:netrw_dirhist_6='/home/soren-wsltp/.local'
+let g:netrw_dirhist_5='/home/soren-wsltp/.local/share'
+let g:netrw_dirhist_4='/home/soren-wsltp/.local/share/nvim'
+let g:netrw_dirhist_3='/home/soren-wsltp/.local/share/nvim/shada'
+let g:netrw_dirhist_2='/home/soren-wsltp/.local/share/nvim'
