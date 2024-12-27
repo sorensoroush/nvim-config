@@ -49,8 +49,12 @@ map <C-k> :lprev<CR>
 "         Vim Settings
 
 set hidden
+filetype on
+filetype plugin on
 filetype indent on
 syntax on
+
+color torte
 
 set incsearch
 set hlsearch
@@ -73,7 +77,8 @@ set timeoutlen=500
 nnoremap <Leader>e :Ex<CR>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :qall<CR>
-nnoremap <Leader>Q :q!<CR>
+nnoremap <Leader>t :split term://bash<CR>
+nnoremap <A-q> :q!<CR>
 
 "------------------------------------------------
 "      Custom superscript/subscript digraphs
