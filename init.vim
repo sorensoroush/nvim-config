@@ -3,11 +3,30 @@
 
 call plug#begin()
 
-Plug 'SirVer/ultisnips'
+" --- Themes ---
+
+Plug 'ray-x/aurora'
+Plug 'rakr/vim-one'
+Plug 'EdenEast/nightfox.nvim'
+Plug 'diegoulloao/neofusion.nvim'
+Plug 'ayu-theme/ayu-vim'
+Plug 'loctvl842/monokai-pro.nvim'
+Plug 'maxmx03/solarized.nvim'
+Plug 'tiagovla/tokyodark.nvim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'ghifarit53/tokyonight-vim'
+Plug 'wolandark/Mitra-Vim'
+Plug 'tyrannicaltoucan/vim-deep-space'
+Plug 'oxfist/night-owl.nvim'
+
+" --- Functional ---
+
 Plug 'easymotion/vim-easymotion'
 Plug 'dense-analysis/ale'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'SirVer/ultisnips'
+Plug 'lervag/vimtex'
 
 call plug#end()
 
@@ -15,7 +34,7 @@ call plug#end()
 "         UltiSnips Settings
 
 let g:UltiSnipsExpandTrigger = '<Tab>'
-let g:UltiSnipsJumpForwardTrigger = '<Tab>'
+let g:UltiSnipsJumpForwardTrigger = 'jk'
 let g:UltiSnipsJumpBackwardsTrigger = '<S-Tab>'
 
 let g:UltiSnipsSnippetDirectories=['UltiSnips', $HOME.'/.config/nvim/UltiSnips', ]
@@ -48,13 +67,13 @@ map <C-k> :lprev<CR>
 "----------------------------------------
 "         Vim Settings
 
+color neofusion
+
 set hidden
 filetype on
 filetype plugin on
 filetype indent on
 syntax on
-
-color torte
 
 set incsearch
 set hlsearch
@@ -74,11 +93,11 @@ set backspace=indent,eol,start
 inoremap kj <Esc>
 set timeoutlen=500
 
-nnoremap <Leader>e :Ex<CR>
-nnoremap <Leader>w :w<CR>
-nnoremap <Leader>q :qall<CR>
-nnoremap <Leader>t :split term://bash<CR>
-nnoremap <A-q> :q!<CR>
+nnoremap <Leader>e <Cmd>Ex<CR>
+nnoremap <Leader>w <Cmd>w<CR>
+nnoremap <Leader>q <Cmd>qall<CR>
+nnoremap <Leader>t <Cmd>split term://bash<CR><Cmd>put =getcwd()<CR>a<C-a>cd<Space><CR><C-l>
+nnoremap <A-q> <Cmd>q!<CR>
 
 "------------------------------------------------
 "      Custom superscript/subscript digraphs
