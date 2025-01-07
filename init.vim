@@ -1,8 +1,39 @@
-" --- Marks ---
-"  N = /home/soren-wsltp/.config/nvim/init.vim
-"  M = /snap/nvim/3186/usr/share/nvim/runtime/doc/usr_toc.txt
-"  S = /home/soren-wsltp/.config/nvim/UltiSnips/snippets.snippets
+"----------------------------------------
+"         Vim Settings
 
+set hidden
+filetype on
+filetype plugin on
+filetype indent on
+syntax on
+
+set incsearch
+set hlsearch
+set expandtab
+set tabstop=4
+set shiftwidth=4
+
+set iskeyword-=/()_{}[]
+set linebreak
+set breakindent
+set autoindent
+set backspace=indent,eol,start
+
+"----------------------------------------
+"         Vim Mappings
+
+inoremap kj <Esc>
+let mapleader = " "
+set timeoutlen=500
+
+nnoremap <Leader>e <Cmd>Ex<CR>
+nnoremap <Leader>w <Cmd>w<CR>
+nnoremap <Leader>q <Cmd>qall<CR>
+nnoremap <Leader>t <Cmd>let @p = expand('%:h:p')<CR><Cmd>split term://bash<CR><Cmd>put p<CR>a<C-a>cd<Space><CR><C-l><C-\><C-n>
+nnoremap <A-q> <Cmd>q!<CR>
+nnoremap <Leader>m <Cmd>mks! $NVIM.session.vim<CR>
+nnoremap <Leader>M <Cmd>so $NVIM.session.vim<CR>
+nnoremap <Leader>f <Cmd>so %<CR>
 
 "----------------------------------------
 "         Vim Plugins
@@ -43,6 +74,11 @@ nnoremap <LocalLeader>lS <Plug>(vimtex-compile-ss)
 let g:vimtex_quickfix_mode = 1
 
 "----------------------------------------
+"         Theme Settings
+
+color neofusion
+
+"----------------------------------------
 "         UltiSnips Settings
 
 nnoremap <Leader>s <Cmd>UltiSnipsEdit<CR>
@@ -79,41 +115,25 @@ nnoremap <Leader>r <Plug>(ale_lint)
 nnoremap <C-j> :lnext<CR>
 nnoremap <C-k> :lprev<CR>
 
-"----------------------------------------
-"         Vim Settings
 
-color neofusion
+"========================================
+"         Miscellaneous Notes
 
-set hidden
-filetype on
-filetype plugin on
-filetype indent on
-syntax on
+" --- Marks ---
+"  N = /home/soren-wsltp/.config/nvim/init.vim
+"  M = /snap/nvim/3186/usr/share/nvim/runtime/doc/usr_toc.txt
+"  S = /home/soren-wsltp/.config/nvim/UltiSnips/snippets.snippets
+"  P = /home/soren-wsltp/.local/share/nvim/plugged/neofusion.nvim/lua/neofusion/palette.lua
 
-set incsearch
-set hlsearch
-set expandtab
-set tabstop=4
-set shiftwidth=4
 
-set iskeyword-=/()_{}[]
-set linebreak
-set breakindent
-set autoindent
-set backspace=indent,eol,start
+" --- Custom Colors (Neofusion) ---
+" bright_orange = '#fd9e3a'
+" neutral_yellow = '#fdae3a'
+" bright_yellow = '#fdce3a',
 
-"----------------------------------------
-"         Vim Mappings
-
-inoremap kj <Esc>
-let mapleader = " "
-set timeoutlen=500
-
-nnoremap <Leader>e <Cmd>Ex<CR>
-nnoremap <Leader>w <Cmd>w<CR>
-nnoremap <Leader>q <Cmd>qall<CR>
-nnoremap <Leader>t <Cmd>split term://bash<CR><Cmd>put =getcwd()<CR>a<C-a>cd<Space><CR><C-l><C-\><C-n>
-nnoremap <A-q> <Cmd>q!<CR>
-nnoremap <Leader>m <Cmd>mks!<CR>
-nnoremap <Leader>f <Cmd>so %<CR>
-
+" --- Default Colors (Neofusion) ---
+" light1 = '#33ABC6',
+" bright_orange = '#fd5e3a',
+" neutral_red = '#fd5e3a',
+" neutral_yellow = '#fd5e3a',
+" bright_yellow = '#fd5e3a',
