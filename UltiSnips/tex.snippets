@@ -1,8 +1,87 @@
 snippet doc "Begin a text document" 
-\documentclass{article}
+\documentclass{${1:article}}
 \usepackage[T1]{fontenc}
 
 \begin{document}
+% ---------------
 $0
+% ---------------
 \end{document}
 endsnippet
+
+
+snippet ftn "Add a footnote" i
+\footnote{$1}$0
+endsnippet
+
+
+snippet em "Emphasizes text with nesting" 
+\emph{${VISUAL}}
+endsnippet
+
+
+snippet it "Italizes text (without nesting)" 
+\textit{${VISUAL}}
+endsnippet
+
+
+snippet bf "Boldens text" 
+\textbf{${VISUAL}}
+endsnippet
+
+
+snippet chap "New chapter entry" 
+\chapter{$1}
+$0
+endsnippet
+
+
+snippet se "Section" 
+\section{$1}
+$0
+endsnippet
+
+
+snippet sse "Subsection" 
+\subsection{$1}
+$0
+endsnippet
+
+
+snippet ssse "Subsubsection" 
+\subsubsection{$1}
+$0
+endsnippet
+
+
+snippet para "Paragraph ('subsubsubsection')" 
+\paragraph{$1}
+$0
+endsnippet
+
+
+snippet spar "Subparagraph ('subsubsubsubsection')" 
+\subparagraph{$1}
+$0
+endsnippet
+
+
+snippet ol "Ordered List"
+\begin{enumerate}
+`!p snip.rv = re.sub('(.+)', '\t \\\\item \g<1>', snip.v.text.strip())`
+\end{enumerate}
+endsnippet
+
+
+snippet ul "Unordered List"
+\begin{itemize}
+`!p snip.rv = re.sub('(.+)', '\t \\\\item \g<1>', snip.v.text.strip())`
+\end{itemize}
+endsnippet
+
+
+#snippet ul "Unordered List"
+#\begin{itemize}
+#`!p snip.rv = re.sub(r'(?P<item>\\item)?(?P<text>.+)', '\t(?(item)|\\\\item ))\g<text>', snip.v.text.strip())`
+#\end{itemize}
+#endsnippet
