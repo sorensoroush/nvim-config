@@ -13,7 +13,7 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 
-set iskeyword-=/()_{}[]
+set iskeyword-=_
 set linebreak
 set breakindent
 set autoindent
@@ -31,9 +31,10 @@ nnoremap <Leader>w <Cmd>w<CR>
 nnoremap <Leader>q <Cmd>qall<CR>
 nnoremap <Leader>t <Cmd>let @p = expand('%:h:p')<CR><Cmd>split term://bash<CR><Cmd>put p<CR>a<C-a>cd<Space><CR><C-l><C-\><C-n>
 nnoremap <A-q> <Cmd>q!<CR>
-nnoremap <Leader>m <Cmd>mks! $NVIM.session.vim<CR>
-nnoremap <Leader>M <Cmd>so $NVIM.session.vim<CR>
+nnoremap <Leader>m <Cmd>so $NVIM/session.vim<CR>
+nnoremap <Leader>M <Cmd>mks! $NVIM/session.vim<CR>
 nnoremap <Leader>f <Cmd>so %<CR>
+nnoremap <Leader>r @:
 
 "----------------------------------------
 "         Vim Plugins
@@ -70,8 +71,15 @@ call plug#end()
 "----------------------------------------
 "         Vimtex Settings
 
-nnoremap <LocalLeader>lS <Plug>(vimtex-compile-ss)
+let maplocalleader = " "
 let g:vimtex_quickfix_mode = 1
+let g:vimtex_view_method = 'zathura'
+"let g:vimtex_quickfix_open_on_warning = 0
+"let g:vimtex_quickfix_ignore_filters = [
+"            \ 'window ID'
+"            \]
+
+nnoremap <LocalLeader>lS <Plug>(vimtex-compile-ss)
 
 "----------------------------------------
 "         Theme Settings
@@ -81,9 +89,6 @@ color neofusion
 "----------------------------------------
 "         UltiSnips Settings
 
-nnoremap <Leader>s <Cmd>UltiSnipsEdit<CR>
-nnoremap <Leader>S <Cmd>call UltiSnips#RefreshSnippets()<CR>
-
 let g:UltiSnipsExpandTrigger = '<Tab>'
 let g:UltiSnipsJumpForwardTrigger = 'jk'
 let g:UltiSnipsJumpBackwardsTrigger = '<S-Tab>'
@@ -91,10 +96,14 @@ let g:UltiSnipsJumpBackwardsTrigger = '<S-Tab>'
 let g:UltiSnipsSnippetDirectories=['UltiSnips', $HOME.'/.config/nvim/UltiSnips', ]
 let g:UltiSnipsEditSplit = 'context'
 
+nnoremap <Leader>s <Cmd>UltiSnipsEdit<CR>
+nnoremap <Leader>S <Cmd>call UltiSnips#RefreshSnippets()<CR>
+
 "----------------------------------------
 "         EasyMotion Settings
 
 let g:EasyMotion_do_mapping = 0
+
 map <Leader> <Plug>(easymotion-prefix)
 map <Leader>a <Plug>(easymotion-overwin-w)
 map <Leader>j <Plug>(easymotion-j)
@@ -111,7 +120,7 @@ let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_save = 0
 let g:ale_lint_on_text_changed = 'never'
 
-nnoremap <Leader>r <Plug>(ale_lint)
+nnoremap <Leader>d <Plug>(ale_lint)
 nnoremap <C-j> :lnext<CR>
 nnoremap <C-k> :lprev<CR>
 
@@ -121,7 +130,7 @@ nnoremap <C-k> :lprev<CR>
 
 " --- Marks ---
 "  N = /home/soren-wsltp/.config/nvim/init.vim
-"  M = /snap/nvim/3186/usr/share/nvim/runtime/doc/usr_toc.txt
+"  M = /snap/nvim/current/usr/share/nvim/runtime/doc/usr_toc.txt
 "  S = /home/soren-wsltp/.config/nvim/UltiSnips/snippets.snippets
 "  P = /home/soren-wsltp/.local/share/nvim/plugged/neofusion.nvim/lua/neofusion/palette.lua
 
