@@ -1,12 +1,116 @@
+# --------------------
+#       Global 
+# --------------------
+
+global !p
+def math():
+	return vim.eval('vimtex#syntax#in_mathzone()') == '1'
+endglobal
+
+# --------------------
+#     Math snips
+# --------------------
+
+
+snippet mm "Inline math" 
+\$$1\$ $0 
+endsnippet
+
+
+snippet rq "Square root" "math()" ieA
+\sqrt{$1}$0
+endsnippet
+
+
+snippet qr "Nth root" "math()" ieA
+\sqrt[$1]{$2}$0
+endsnippet
+
+
+snippet ff "Fraction" "math()" ieA
+\frac{$1}{$2}$0
+endsnippet
+
+
+snippet qq "Small space in math context" "math()" ieA
+\quad$0
+endsnippet
+
+
+snippet tt "Text in math context" "math()" ieA
+\text{$1}$0
+endsnippet
+
+
+snippet ee "Equation"
+\begin{equation${1:*}}
+$2
+\end{equation$1}
+$0
+endsnippet
+
+
+snippet ea "Aligned equation"
+\begin{align${1:*}}
+$2
+\end{align$1}
+$0
+endsnippet
+
+
+snippet itt "Intertext within alignment" "math()" beA
+\intertext{$1}$0
+endsnippet
+
+
+snippet ml "Multilined equation (using split)" 
+\begin{equation${1:*}}
+\begin{split}
+$2
+\end{split}
+\end{equation$1}
+$0
+endsnippet
+
+
+snippet bx "Box" 
+\fbox{$1}$0
+endsnippet
+
+
+snippet bx "Box (math mode environment)" 
+\boxed{$1}$0
+endsnippet
+
+# --------------------
+#   Formatting snips
+# --------------------
+
+
 snippet doc "Begin a text document" 
 \documentclass{${1:article}}
 \usepackage[T1]{fontenc}
+\usepackage{amsmath}
 
 \begin{document}
 % ---------------
+
 $0
+
 % ---------------
 \end{document}
+endsnippet
+
+
+snippet pack "Import package" 
+\usepackage{$1}$0
+endsnippet
+
+
+snippet en "Generic environment wrapper" 
+\begin{$1}
+$0
+\end{$1}
 endsnippet
 
 
@@ -31,32 +135,27 @@ endsnippet
 
 
 snippet chap "New chapter entry" 
-\chapter{$1}
-$0
+\chapter{$1}$0
 endsnippet
 
 
 snippet se "Section" 
-\section{$1}
-$0
+\section{$1}$0
 endsnippet
 
 
 snippet sse "Subsection" 
-\subsection{$1}
-$0
+\subsection{$1}$0
 endsnippet
 
 
 snippet ssse "Subsubsection" 
-\subsubsection{$1}
-$0
+\subsubsection{$1}$0
 endsnippet
 
 
 snippet para "Paragraph ('subsubsubsection')" 
-\paragraph{$1}
-$0
+\paragraph{$1}$0
 endsnippet
 
 
@@ -68,14 +167,14 @@ endsnippet
 
 snippet ol "Ordered List"
 \begin{enumerate}
-`!p snip.rv = re.sub('(.+)', '\t \\\\item \g<1>', snip.v.text.strip())`
+`!p snip.rv = re.sub('(.+)', '\t\\\\item \g<1>', snip.v.text.strip())`
 \end{enumerate}
 endsnippet
 
 
 snippet ul "Unordered List"
 \begin{itemize}
-`!p snip.rv = re.sub('(.+)', '\t \\\\item \g<1>', snip.v.text.strip())`
+`!p snip.rv = re.sub('(.+)', '\t\\\\item \g<1>', snip.v.text.strip())`
 \end{itemize}
 endsnippet
 
@@ -85,3 +184,10 @@ endsnippet
 #`!p snip.rv = re.sub(r'(?P<item>\\item)?(?P<text>.+)', '\t(?(item)|\\\\item ))\g<text>', snip.v.text.strip())`
 #\end{itemize}
 #endsnippet
+
+
+snippet tab "Table with formatting" 
+\begin{tabular}{$1}
+`!p snip.rv = re.sub(r'^(.+)$', '    \g<1> \\\\\\\\', snip.v.text.strip(), flags=re.M)`
+\end{tabular}
+endsnippet
