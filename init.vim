@@ -19,6 +19,10 @@ set breakindent
 set autoindent
 set backspace=indent,eol,start
 
+let g:netrw_keepdir = 0
+let g:netrw_banner = 0
+let g:netrw_hide = 1
+
 "----------------------------------------
 "         Vim Mappings
 
@@ -74,6 +78,7 @@ call plug#end()
 let maplocalleader = " "
 let g:vimtex_quickfix_mode = 1
 let g:vimtex_view_method = 'zathura'
+let g:vimtex_imaps_leader = ";"
 "let g:vimtex_quickfix_open_on_warning = 0
 "let g:vimtex_quickfix_ignore_filters = [
 "            \ 'window ID'
@@ -81,6 +86,10 @@ let g:vimtex_view_method = 'zathura'
 
 nnoremap <LocalLeader>lS <Plug>(vimtex-compile-ss)
 
+call vimtex#imaps#add_map({
+    \ 'lhs' : ',',
+    \ 'rhs' : '\dotsc',
+    \})
 "----------------------------------------
 "         Theme Settings
 
@@ -136,13 +145,18 @@ nnoremap <C-k> :lprev<CR>
 
 
 " --- Custom Colors (Neofusion) ---
-" bright_orange = '#fd9e3a'
-" neutral_yellow = '#fdae3a'
 " bright_yellow = '#fdce3a',
+" bright_orange = '#fd9e3a'
+" bright_blue = '#9289c5', (Reverted)
+" neutral_red = '#ad5e3a',
+" neutral_yellow = '#fdae3a'
+" neutral_aqua = '#66aeb9', (Reverted)
 
 " --- Default Colors (Neofusion) ---
-" light1 = '#33ABC6',
+" light1 = '#33ABC6', ???
+" bright_yellow = '#fd5e3a',
 " bright_orange = '#fd5e3a',
+" bright_blue = '#e2d9c5',
 " neutral_red = '#fd5e3a',
 " neutral_yellow = '#fd5e3a',
-" bright_yellow = '#fd5e3a',
+" neutral_aqua = '#66def9',
