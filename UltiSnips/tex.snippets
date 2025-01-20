@@ -73,13 +73,58 @@ $0
 endsnippet
 
 
-snippet bx "Box" 
+snippet fx "Box" 
 \fbox{$1}$0
 endsnippet
 
 
-snippet bx "Box (math mode environment)" 
+snippet bx "Box (math mode environment)"
 \boxed{$1}$0
+endsnippet
+
+
+snippet la "Left arrow (with text)" "math()" ieA
+\xleftarrow[$1]{$2}$0
+endsnippet
+
+
+snippet ra "Right arrow (with text)" "math()" ieA
+\xrightarrow[$1]{$2}$0
+endsnippet
+
+
+snippet ee "Exponent" "math()" ieA
+^{$1}$0
+endsnippet
+
+
+snippet ss "Subscript" "math()" ieA
+_{$1}$0
+endsnippet
+
+
+snippet bb "Binomial coefficient (combinations/choose)" "math()" ieA
+\binom{$1}{$2}$0
+endsnippet
+
+
+snippet rf "Reference" 
+\ref{$1}$0
+endsnippet
+
+
+snippet lb "Label" 
+\label{$1}$0
+endsnippet
+
+
+snippet md "Equivalence (for modular arithmetic)" "math()" ieA
+\equiv{$1}$0
+endsnippet
+
+
+snippet sm "Sum series" 
+C
 endsnippet
 
 # --------------------
@@ -90,7 +135,7 @@ endsnippet
 snippet doc "Begin a text document" 
 \documentclass{${1:article}}
 \usepackage[T1]{fontenc}
-\usepackage{amsmath}
+\usepackage{amsmath, amssymb}
 
 \begin{document}
 % ---------------
@@ -190,4 +235,9 @@ snippet tab "Table with formatting"
 \begin{tabular}{$1}
 `!p snip.rv = re.sub(r'^(.+)$', '    \g<1> \\\\\\\\', snip.v.text.strip(), flags=re.M)`
 \end{tabular}
+endsnippet
+
+
+snippet nw "Section-based numbering" 
+\numberwithin{equation}{section}
 endsnippet
