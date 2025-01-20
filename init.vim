@@ -21,7 +21,7 @@ set backspace=indent,eol,start
 
 let g:netrw_keepdir = 0
 let g:netrw_banner = 0
-let g:netrw_hide = 1
+let g:netrw_list_hide= '\(^\|\s\s\)\zs\.\S\+'
 
 "----------------------------------------
 "         Vim Mappings
@@ -30,14 +30,14 @@ inoremap kj <Esc>
 let mapleader = " "
 set timeoutlen=500
 
-nnoremap <Leader>e <Cmd>Ex<CR>
+nnoremap <Leader>e <Cmd>Ex<CR><Cmd>bd ^<CR>
 nnoremap <Leader>w <Cmd>w<CR>
 nnoremap <Leader>q <Cmd>qall<CR>
 nnoremap <Leader>t <Cmd>let @p = expand('%:h:p')<CR><Cmd>split term://bash<CR><Cmd>put p<CR>a<C-a>cd<Space><CR><C-l><C-\><C-n>
 nnoremap <A-q> <Cmd>q!<CR>
 nnoremap <Leader>m <Cmd>so $NVIM/session.vim<CR>
 nnoremap <Leader>M <Cmd>mks! $NVIM/session.vim<CR>
-nnoremap <Leader>f <Cmd>so %<CR>
+nnoremap <Leader>o <Cmd>so %<CR>
 nnoremap <Leader>r @:
 
 "----------------------------------------
@@ -85,11 +85,11 @@ let g:vimtex_imaps_leader = ";"
 "            \]
 
 nnoremap <LocalLeader>lS <Plug>(vimtex-compile-ss)
-
 call vimtex#imaps#add_map({
     \ 'lhs' : ',',
     \ 'rhs' : '\dotsc',
     \})
+
 "----------------------------------------
 "         Theme Settings
 
@@ -145,8 +145,8 @@ nnoremap <C-k> :lprev<CR>
 
 
 " --- Custom Colors (Neofusion) ---
-" bright_yellow = '#fdce3a',
-" bright_orange = '#fd9e3a'
+" bright_yellow = '#fdde3a',
+" bright_orange = '#fdae3a'
 " bright_blue = '#9289c5', (Reverted)
 " neutral_red = '#ad5e3a',
 " neutral_yellow = '#fdae3a'
