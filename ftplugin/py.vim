@@ -1,0 +1,1 @@
+/home/soren-wsltp/.config/nvim/ftplugin/python.vim

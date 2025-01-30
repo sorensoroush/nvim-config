@@ -1,3 +1,5 @@
+"inoremap <expr> <Enter> g:vimtex#syntax#in_mathzone() ? eval(<Plug>(vimtex-cmd-toggle-break)) : eval(<CR>)
+
 call vimtex#imaps#add_map({
     \ 'lhs' : ',',
     \ 'rhs' : '\dotsc',
