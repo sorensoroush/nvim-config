@@ -1,3 +1,4 @@
+"echo '>^.^<'
 "----------------------------------------
 "         Vim Settings
 
@@ -12,12 +13,15 @@ set hlsearch
 set expandtab
 set tabstop=4
 set shiftwidth=4
+set shiftround
 
 set iskeyword-=_
 set linebreak
 set breakindent
 set autoindent
 set backspace=indent,eol,start
+
+set ignorecase smartcase
 
 let g:netrw_keepdir = 0
 let g:netrw_banner = 0
@@ -30,15 +34,19 @@ inoremap kj <Esc>
 let mapleader = " "
 set timeoutlen=500
 
-nnoremap <Leader>e <Cmd>Ex<CR><Cmd>bd ^<CR>
+nnoremap <Leader>e <Cmd>Ex<CR>
+nnoremap <Leader>E <Cmd>Ex ~<CR>
 nnoremap <Leader>w <Cmd>w<CR>
 nnoremap <Leader>q <Cmd>qall<CR>
-nnoremap <Leader>t <Cmd>let @p = expand('%:h:p')<CR><Cmd>split term://bash<CR><Cmd>put p<CR>a<C-a>cd<Space><CR><C-l><C-\><C-n>
+nnoremap <Leader>t <Cmd>let @p = expand('%:h:p')<CR><Cmd>split term://bash<CR><Cmd>put p<CR>a<C-a>cd<Space><CR><C-l>
 nnoremap <A-q> <Cmd>q!<CR>
 nnoremap <Leader>m <Cmd>so $NVIM/session.vim<CR>
 nnoremap <Leader>M <Cmd>mks! $NVIM/session.vim<CR>
 nnoremap <Leader>o <Cmd>so %<CR>
 nnoremap <Leader>r @:
+nnoremap <Leader>v <C-w>s<Cmd>e $NVIM/ftplugin/%:e.vim<CR>
+
+tnoremap <A-q> <C-\><C-n><Cmd>q<CR>
 
 "----------------------------------------
 "         Vim Plugins
@@ -137,15 +145,8 @@ nnoremap <C-k> :lprev<CR>
 "========================================
 "         Miscellaneous Notes
 
-" --- Marks ---
-"  N = /home/soren-wsltp/.config/nvim/init.vim
-"  M = /snap/nvim/current/usr/share/nvim/runtime/doc/usr_toc.txt
-"  S = /home/soren-wsltp/.config/nvim/UltiSnips/snippets.snippets
-"  P = /home/soren-wsltp/.local/share/nvim/plugged/neofusion.nvim/lua/neofusion/palette.lua
-
-
 " --- Custom Colors (Neofusion) ---
-" bright_yellow = '#fdde3a',
+" bright_yellow = '#fdee3a',
 " bright_orange = '#fdae3a'
 " bright_blue = '#9289c5', (Reverted)
 " neutral_red = '#ad5e3a',
@@ -160,3 +161,10 @@ nnoremap <C-k> :lprev<CR>
 " neutral_red = '#fd5e3a',
 " neutral_yellow = '#fd5e3a',
 " neutral_aqua = '#66def9',
+
+" --- Marks ---
+"  N = /home/soren-wsltp/.config/nvim/init.vim
+"  M = /snap/nvim/current/usr/share/nvim/runtime/doc/usr_toc.txt
+"  S = /home/soren-wsltp/.config/nvim/UltiSnips/snippets.snippets
+"  P = /home/soren-wsltp/.local/share/nvim/plugged/neofusion.nvim/lua/neofusion/palette.lua
+"  T = /home/soren-wsltp/.todo
