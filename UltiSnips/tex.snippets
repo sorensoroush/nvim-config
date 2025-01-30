@@ -51,14 +51,16 @@ endsnippet
 
 
 snippet ea "Aligned equation"
+\begin{subequations}
 \begin{align${1:*}}
 $2
 \end{align$1}
+\end{subequations}
 $0
 endsnippet
 
 
-snippet itt "Intertext within alignment" "math()" beA
+snippet it "Intertext within alignment" "math()" beA
 \intertext{$1}$0
 endsnippet
 
@@ -119,13 +121,69 @@ endsnippet
 
 
 snippet md "Equivalence (for modular arithmetic)" "math()" ieA
-\equiv{$1}$0
+\equiv_{$1}$0
 endsnippet
 
 
-snippet sm "Sum series" 
-C
+snippet sm "Sum series" "math()" ieA
+\sum_{$1}^{$2}$0
 endsnippet
+
+
+snippet pd "Product series" "math()" ieA
+\prod_{$1}^{$2}$0
+endsnippet
+
+
+snippet lm "Limit" "math()" ieA
+\lim_{$1\to$2}$0
+endsnippet
+
+
+snippet in "Integral" "math()" ieA
+\int_{$1}^{$2}$0
+endsnippet
+
+
+snippet bl "Big left (1/4)" "math()" ieA
+\bigl
+endsnippet
+
+
+snippet br "Big right (1/4)" "math()" ieA
+\bigr
+endsnippet
+
+
+snippet bL "Big left (2/4)" "math()" ieA
+\Bigl
+endsnippet
+
+
+snippet bR "Big right (2/4)" "math()" ieA
+\Bigr
+endsnippet
+
+
+snippet Bl "Big left (3/4)" "math()" ieA
+\biggl
+endsnippet
+
+
+snippet Br "Big right (3/4)" "math()" ieA
+\biggr
+endsnippet
+
+
+snippet BL "Big left (4/4)" "math()" ieA
+\Biggl
+endsnippet
+
+
+snippet BR "Big right (4/4)" "math()" ieA
+\Biggr
+endsnippet
+
 
 # --------------------
 #   Formatting snips
