@@ -22,10 +22,12 @@ set autoindent
 set backspace=indent,eol,start
 
 set ignorecase smartcase
+set splitbelow
 
 let g:netrw_keepdir = 0
 let g:netrw_banner = 0
 let g:netrw_list_hide= '\(^\|\s\s\)\zs\.\S\+'
+let g:netrw_liststyle = 1
 
 "----------------------------------------
 "         Vim Mappings
@@ -35,7 +37,9 @@ let mapleader = " "
 set timeoutlen=500
 
 nnoremap <Leader>e <Cmd>Ex<CR>
+nnoremap <A-e> <C-w>s<Cmd>Ex<CR>
 nnoremap <Leader>E <Cmd>Ex ~<CR>
+nnoremap <A-n> <C-w>s'N
 nnoremap <Leader>w <Cmd>w<CR>
 nnoremap <Leader>q <Cmd>qall<CR>
 nnoremap <Leader>t <Cmd>let @p = expand('%:h:p')<CR><Cmd>split term://bash<CR><Cmd>put p<CR>a<C-a>cd<Space><CR><C-l>
@@ -45,6 +49,7 @@ nnoremap <Leader>M <Cmd>mks! $NVIM/session.vim<CR>
 nnoremap <Leader>o <Cmd>so %<CR>
 nnoremap <Leader>r @:
 nnoremap <Leader>v <C-w>s<Cmd>e $NVIM/ftplugin/%:e.vim<CR>
+nnoremap <A-f> <C-w>s'F
 
 tnoremap <A-q> <C-\><C-n><Cmd>q<CR>
 
@@ -93,10 +98,8 @@ let g:vimtex_imaps_leader = ";"
 "            \]
 
 nnoremap <LocalLeader>lS <Plug>(vimtex-compile-ss)
-call vimtex#imaps#add_map({
-    \ 'lhs' : ',',
-    \ 'rhs' : '\dotsc',
-    \})
+nnoremap <LocalLeader>lh <Cmd>h vimtex-motions<CR>
+nnoremap <LocalLeader>lH <Cmd>h vimtex-default-mappings<CR>
 
 "----------------------------------------
 "         Theme Settings
@@ -122,7 +125,7 @@ nnoremap <Leader>S <Cmd>call UltiSnips#RefreshSnippets()<CR>
 let g:EasyMotion_do_mapping = 0
 
 map <Leader> <Plug>(easymotion-prefix)
-map <Leader>a <Plug>(easymotion-overwin-w)
+map <Leader>d <Plug>(easymotion-overwin-w)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 "map <Leader>h <Plug>(easymotion-lineforward)
@@ -137,7 +140,9 @@ let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_save = 0
 let g:ale_lint_on_text_changed = 'never'
 
-nnoremap <Leader>d <Plug>(ale_lint)
+nnoremap <Leader>a <Plug>(ale_lint)
+nnoremap <Leader>A <Plug>(ale_reset_buffer)
+nnoremap <A-a> <Cmd>ALEInfo<CR>
 nnoremap <C-j> :lnext<CR>
 nnoremap <C-k> :lprev<CR>
 
@@ -168,3 +173,7 @@ nnoremap <C-k> :lprev<CR>
 "  S = /home/soren-wsltp/.config/nvim/UltiSnips/snippets.snippets
 "  P = /home/soren-wsltp/.local/share/nvim/plugged/neofusion.nvim/lua/neofusion/palette.lua
 "  T = /home/soren-wsltp/.todo
+"  F = /home/soren-wsltp/college-files/spring-2025/.fig
+"  Z = [csci-135]
+"  X = [csci-160]
+"  C = [math-150]
