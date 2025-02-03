@@ -44,19 +44,17 @@ endsnippet
 
 snippet ee "Equation"
 \begin{equation${1:*}}
-$2
-\end{equation$1}
-$0
+    $2
+\end{equation$1}$0
 endsnippet
 
 
 snippet ea "Aligned equation"
 \begin{subequations}
 \begin{align${1:*}}
-$2
+    $2
 \end{align$1}
-\end{subequations}
-$0
+\end{subequations}$0
 endsnippet
 
 
@@ -68,10 +66,9 @@ endsnippet
 snippet ml "Multilined equation (using split)" 
 \begin{equation${1:*}}
 \begin{split}
-$2
+    $2
 \end{split}
-\end{equation$1}
-$0
+\end{equation$1}$0
 endsnippet
 
 
@@ -112,6 +109,15 @@ endsnippet
 
 snippet rf "Reference" 
 \ref{$1}$0
+endsnippet
+
+snippet erf "Equation reference" 
+\eqref{$1}$0
+endsnippet
+
+
+snippet prf "Page reference" 
+\pageref{$1}$0
 endsnippet
 
 
@@ -192,10 +198,16 @@ endsnippet
 
 snippet doc "Begin a text document" 
 \documentclass{${1:article}}
-\usepackage[T1]{fontenc}
-\usepackage{amsmath, amssymb}
+
+\usepackage{${2:amsmath}}
+
+\author{Soren S.}
+\title{$3}
+\date{\today}
 
 \begin{document}
+\maketitle
+\tableofcontents
 % ---------------
 
 $0
@@ -217,48 +229,62 @@ $0
 endsnippet
 
 
+snippet ven "Generic environment wrapper (using visual placeholder)" 
+\begin{$1}
+`!p
+snip.rv = re.sub(r'^(.*)$', '    \g<1>', snip.v.text.strip(), flags=re.M)
+`
+\end{$1}
+endsnippet
+
+
 snippet ftn "Add a footnote" i
 \footnote{$1}$0
 endsnippet
 
 
 snippet em "Emphasizes text with nesting" 
-\emph{${VISUAL}}
+\emph{$1}$0
 endsnippet
 
 
 snippet it "Italizes text (without nesting)" 
-\textit{${VISUAL}}
+\textit{$1}$0
 endsnippet
 
 
 snippet bf "Boldens text" 
-\textbf{${VISUAL}}
+\textbf{$1}$0
 endsnippet
 
 
-snippet chap "New chapter entry" 
-\chapter{$1}$0
+snippet chp "New chapter entry" 
+\chapter{$1}
+$0
 endsnippet
 
 
 snippet se "Section" 
-\section{$1}$0
+\section{$1}
+$0
 endsnippet
 
 
 snippet sse "Subsection" 
-\subsection{$1}$0
+\subsection{$1}
+$0
 endsnippet
 
 
-snippet ssse "Subsubsection" 
-\subsubsection{$1}$0
+snippet sss "Subsubsection" 
+\subsubsection{$1}
+$0
 endsnippet
 
 
-snippet para "Paragraph ('subsubsubsection')" 
-\paragraph{$1}$0
+snippet par "Paragraph ('subsubsubsection')" 
+\paragraph{$1}
+$0
 endsnippet
 
 
@@ -291,11 +317,46 @@ endsnippet
 
 snippet tab "Table with formatting" 
 \begin{tabular}{$1}
-`!p snip.rv = re.sub(r'^(.+)$', '    \g<1> \\\\\\\\', snip.v.text.strip(), flags=re.M)`
+`!p 
+subbed_text = re.sub(r'^(.+)$', '    \g<1> \\\\\\\\', snip.v.text.strip(), flags=re.M)
+snip.rv = re.sub(r'^\s{4,}(top|mid|bottom)\W*$', '    \\\\\g<1>rule', subbed_text, flags=re.M)
+`
 \end{tabular}
 endsnippet
 
 
 snippet nw "Section-based numbering" 
 \numberwithin{equation}{section}
+endsnippet
+
+
+snippet mb "Mbox for keeping certain text unhyphenable" 
+\mbox{$1}$0
+endsnippet
+
+
+snippet nl "Line break" 
+\\\[$1cm]$0
+endsnippet
+
+
+snippet ncom "New command declaration" 
+\NewDocumentCommand{\\${1:name}}{}{${2:definition}}$0
+endsnippet
+
+
+snippet rcom "Redefine command declaration" 
+\RenewDocumentCommand{\\${1:command}}{}{${2:definition}}$0
+endsnippet
+
+
+snippet fig "Figure environment" 
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[
+        width=\textwidth
+    ]{../.fig/$1}
+	\caption[$2]{$3}
+	\label{$4}
+\end{figure}$0
 endsnippet
