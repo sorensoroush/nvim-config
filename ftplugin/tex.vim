@@ -99,3 +99,8 @@ call vimtex#imaps#add_map({
     \ 'lhs' : 'on',
     \ 'rhs' : '\neg',
     \})
+
+call vimtex#imaps#add_map({
+    \ 'lhs' : 'ohl',
+    \ 'rhs' : '\leftandright',
+    \})
