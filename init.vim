@@ -28,6 +28,9 @@ let g:netrw_keepdir = 0
 let g:netrw_banner = 0
 let g:netrw_list_hide= '\(^\|\s\s\)\zs\.\S\+'
 let g:netrw_liststyle = 1
+let g:netrw_sort_by = "time"
+let g:netrw_sort_direction = "reverse"
+
 
 "----------------------------------------
 "         Vim Mappings
@@ -49,7 +52,7 @@ nnoremap <Leader>M <Cmd>mks! $NVIM/session.vim<CR>
 nnoremap <Leader>o <Cmd>so %<CR>
 nnoremap <Leader>r @:
 nnoremap <Leader>v <C-w>s<Cmd>e $NVIM/ftplugin/%:e.vim<CR>
-nnoremap <A-f> <C-w>s'F
+nnoremap <A-f> <C-w>s'F<Cmd>Ex<CR>
 
 tnoremap <A-q> <C-\><C-n><Cmd>q<CR>
 
@@ -142,9 +145,9 @@ let g:ale_lint_on_text_changed = 'never'
 
 nnoremap <Leader>a <Plug>(ale_lint)
 nnoremap <Leader>A <Plug>(ale_reset_buffer)
-nnoremap <A-a> <Cmd>ALEInfo<CR>
-nnoremap <C-j> :lnext<CR>
-nnoremap <C-k> :lprev<CR>
+nnoremap <A-a> <Cmd>ALEDetail<CR>
+nnoremap <C-j> <Cmd>ALENext<CR>
+nnoremap <C-k> <Cmd>ALEPrevious<CR>
 
 
 "========================================
