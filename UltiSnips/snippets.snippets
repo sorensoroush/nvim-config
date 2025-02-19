@@ -3,3 +3,10 @@ snippet snip "A snippet for snippets"
 `!v @"`$0
 `!p snip.rv = 'endsnippet'`
 endsnippet
+
+
+snippet snipm "A snippet for math snippets" 
+`!p snip.rv = 'snippet'` $1 "$2" "math()" ieA
+`!v @"`$0
+`!p snip.rv = 'endsnippet'`
+endsnippet
