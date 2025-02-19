@@ -13,141 +13,148 @@ endglobal
 
 
 snippet mm "Inline math" 
-\$$1\$ $0 
+\$$1\$
 endsnippet
 
 
 snippet rq "Square root" "math()" ieA
-\sqrt{$1}$0
+\sqrt{$1}
 endsnippet
 
 
 snippet qr "Nth root" "math()" ieA
-\sqrt[$1]{$2}$0
+\sqrt[$1]{$2}
 endsnippet
 
 
 snippet ff "Fraction" "math()" ieA
-\frac{$1}{$2}$0
+\frac{$1}{$2}
 endsnippet
 
 
 snippet qq "Small space in math context" "math()" ieA
-\quad$0
+\quad
 endsnippet
 
 
 snippet tt "Text in math context" "math()" ieA
-\text{$1}$0
+\text{$1}
 endsnippet
 
 
 snippet ee "Equation"
 \begin{equation${1:*}}
-    $2
-\end{equation$1}$0
+	$2
+\end{equation$1}
 endsnippet
 
 
 snippet ea "Aligned equation"
 \begin{subequations}
 \begin{align${1:*}}
-    $2
+	$2
 \end{align$1}
-\end{subequations}$0
+\end{subequations}
 endsnippet
 
 
 snippet it "Intertext within alignment" "math()" beA
-\intertext{$1}$0
+\intertext{$1}
 endsnippet
 
 
 snippet ml "Multilined equation (using split)" 
 \begin{equation${1:*}}
 \begin{split}
-    $2
+	$2
 \end{split}
-\end{equation$1}$0
+\end{equation$1}
+endsnippet
+
+
+snippet me "Gather (multiple equations)" 
+\begin{gather${1:*}}
+	$2
+\end{gather$1}
 endsnippet
 
 
 snippet fx "Box" 
-\fbox{$1}$0
+\fbox{$1}
 endsnippet
 
 
 snippet bx "Box (math mode environment)"
-\boxed{$1}$0
+\boxed{$1}
 endsnippet
 
 
 snippet la "Left arrow (with text)" "math()" ieA
-\xleftarrow[$1]{$2}$0
+\xleftarrow[$1]{$2}
 endsnippet
 
 
 snippet ra "Right arrow (with text)" "math()" ieA
-\xrightarrow[$1]{$2}$0
+\xrightarrow[$1]{$2}
 endsnippet
 
 
 snippet ee "Exponent" "math()" ieA
-^{$1}$0
+^{$1}
 endsnippet
 
 
 snippet ss "Subscript" "math()" ieA
-_{$1}$0
+_{$1}
 endsnippet
 
 
 snippet bb "Binomial coefficient (combinations/choose)" "math()" ieA
-\binom{$1}{$2}$0
+\binom{$1}{$2}
 endsnippet
 
 
 snippet rf "Reference" 
-\ref{$1}$0
+\ref{$1}
 endsnippet
 
-snippet erf "Equation reference" 
-\eqref{$1}$0
+snippet erf "Equation reference" "math()" ieA
+\eqref{$1}
 endsnippet
 
 
 snippet prf "Page reference" 
-\pageref{$1}$0
+\pageref{$1}
 endsnippet
 
 
 snippet lb "Label" 
-\label{$1}$0
+\label{$1}
 endsnippet
 
 
 snippet md "Equivalence (for modular arithmetic)" "math()" ieA
-\equiv_{$1}$0
+\equiv_{$1}
 endsnippet
 
 
 snippet sm "Sum series" "math()" ieA
-\sum_{$1}^{$2}$0
+\sum_{$1}^{$2}
 endsnippet
 
 
 snippet pd "Product series" "math()" ieA
-\prod_{$1}^{$2}$0
+\prod_{$1}^{$2}
 endsnippet
 
 
 snippet lm "Limit" "math()" ieA
-\lim_{$1\to$2}$0
+\lim_{$1\to $2}
 endsnippet
 
 
-snippet in "Integral" "math()" ieA
-\int_{$1}^{$2}$0
+snippet nn "Integral" "math()" ieA
+\int_{$1}^{$2}
 endsnippet
 
 
@@ -191,6 +198,10 @@ snippet BR "Big right (4/4)" "math()" ieA
 endsnippet
 
 
+snippet ol "Line over characters" "math()" ieA
+\overline{$1}
+endsnippet
+
 # --------------------
 #   Formatting snips
 # --------------------
@@ -218,13 +229,13 @@ endsnippet
 
 
 snippet pack "Import package" 
-\usepackage{$1}$0
+\usepackage{$1}
 endsnippet
 
 
 snippet en "Generic environment wrapper" 
 \begin{$1}
-$0
+$2
 \end{$1}
 endsnippet
 
@@ -239,90 +250,105 @@ endsnippet
 
 
 snippet ftn "Add a footnote" i
-\footnote{$1}$0
+\footnote{$1}
 endsnippet
 
 
 snippet em "Emphasizes text with nesting" 
-\emph{$1}$0
+\emph{$1}
 endsnippet
 
 
 snippet it "Italizes text (without nesting)" 
-\textit{$1}$0
+\textit{$1}
 endsnippet
 
 
 snippet bf "Boldens text" 
-\textbf{$1}$0
+\textbf{$1}
 endsnippet
 
 
 snippet chp "New chapter entry" 
 \chapter{$1}
-$0
 endsnippet
 
 
 snippet se "Section" 
 \section{$1}
-$0
 endsnippet
 
 
 snippet sse "Subsection" 
 \subsection{$1}
-$0
 endsnippet
 
 
 snippet sss "Subsubsection" 
 \subsubsection{$1}
-$0
 endsnippet
 
 
 snippet par "Paragraph ('subsubsubsection')" 
 \paragraph{$1}
-$0
 endsnippet
 
 
 snippet spar "Subparagraph ('subsubsubsubsection')" 
 \subparagraph{$1}
-$0
 endsnippet
 
 
 snippet ol "Ordered List"
 \begin{enumerate}
-`!p snip.rv = re.sub('(.+)', '\t\\\\item \g<1>', snip.v.text.strip())`
+`!p
+snip.rv = re.sub('(\s*)(\\\\item)?(\[.+\])?(\s)?(.+)$', '\g<1>\t\\\\item\g<3> \g<5>', snip.v.text.strip(), flags=re.M)
+`
 \end{enumerate}
 endsnippet
 
 
 snippet ul "Unordered List"
 \begin{itemize}
-`!p snip.rv = re.sub('(.+)', '\t\\\\item \g<1>', snip.v.text.strip())`
+`!p
+snip.rv = re.sub('(\s*)(\\\\item)?(.+)$', '\g<1>\t\\\\item \g<3>', snip.v.text.strip(), flags=re.M)
+`
 \end{itemize}
 endsnippet
 
 
-#snippet ul "Unordered List"
-#\begin{itemize}
-#`!p snip.rv = re.sub(r'(?P<item>\\item)?(?P<text>.+)', '\t(?(item)|\\\\item ))\g<text>', snip.v.text.strip())`
-#\end{itemize}
-#endsnippet
+snippet dl "Description List"
+\begin{description}
+`!p
+snip.rv = re.sub('^(\s*)?(\\\\item\s)?(\[.+\])\s(.+)$', '\g<1>\t\\\\item\g<3> \g<4>', snip.v.text.strip(), flags=re.M)
+`
+\end{description}
+endsnippet
 
 
 snippet tab "Table with formatting" 
-\begin{tabular}{$1}
+\begin{table}[htbp]
+	\centering
+	\begin{tabular}{${1:column justifications}}
+`!p 
+subbed_text = re.sub(r'^(.+)$', '        \g<1> \\\\\\\\', snip.v.text.strip(), flags=re.M)
+snip.rv += re.sub(r'^\s{4,}(top|mid|bottom)\W*$', '        \\\\\g<1>rule', subbed_text, flags=re.M)
+`
+	\end{tabular}
+	\caption[$2]{$3}
+	\label{$4}
+\end{table}
+endsnippet
+
+snippet tabu "Table without formatting" 
+\begin{tabular}{${1:column justifications}}
 `!p 
 subbed_text = re.sub(r'^(.+)$', '    \g<1> \\\\\\\\', snip.v.text.strip(), flags=re.M)
-snip.rv = re.sub(r'^\s{4,}(top|mid|bottom)\W*$', '    \\\\\g<1>rule', subbed_text, flags=re.M)
+snip.rv += re.sub(r'^\s{4,}(top|mid|bottom)\W*$', '    \\\\\g<1>rule', subbed_text, flags=re.M)
 `
 \end{tabular}
 endsnippet
+
 
 
 snippet nw "Section-based numbering" 
@@ -331,32 +357,61 @@ endsnippet
 
 
 snippet mb "Mbox for keeping certain text unhyphenable" 
-\mbox{$1}$0
+\mbox{$1}
 endsnippet
 
 
 snippet nl "Line break" 
-\\\[$1cm]$0
+\\\[0.${1:25}cm]
 endsnippet
 
 
 snippet ncom "New command declaration" 
-\NewDocumentCommand{\\${1:name}}{}{${2:definition}}$0
+\NewDocumentCommand{\\${1:name}}{}{${2:definition}}
 endsnippet
 
 
 snippet rcom "Redefine command declaration" 
-\RenewDocumentCommand{\\${1:command}}{}{${2:definition}}$0
+\RenewDocumentCommand{\\${1:command}}{}{${2:definition}}
 endsnippet
 
 
 snippet fig "Figure environment" 
 \begin{figure}[htpb]
-    \centering
-    \includegraphics[
-        width=\textwidth
-    ]{../.fig/$1}
+	\centering
+	\includegraphics[
+		width=\textwidth
+	]{../.fig/$1}
 	\caption[$2]{$3}
 	\label{$4}
-\end{figure}$0
+\end{figure}
+endsnippet
+
+snippet mc "Multicolumn cell" 
+\multicolumn{${1:column span}}{${2:justification}}{${3:text}}
+endsnippet
+
+
+snippet cr "Multicolumn rule" 
+\cmidrule(${1:trim}){${2:column span}}
+endsnippet
+
+
+snippet col "Colored text" 
+\textcolor[${1:model}]{${2:color}}{${3:text}}
+endsnippet
+
+
+snippet tag "Custom tag for equations" 
+\tag{$1}
+endsnippet
+
+
+snippet phan "Phantom character" i
+\phantom{$1}
+endsnippet
+
+
+snippet hr "Horizontal line" 
+\rule{\linewidth}{.01mm}
 endsnippet
