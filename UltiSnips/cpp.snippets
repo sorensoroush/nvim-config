@@ -17,13 +17,13 @@ endsnippet
 
 
 snippet main "Basic boilerplate" 
-#include<iostream>
+#include <iostream>$1
 using namespace std;
 
 int main() {
 	$0
 
-    return 0;
+	return 0;
 }
 endsnippet
 
@@ -33,4 +33,17 @@ snippet if "If statement"
 if ($1) {
 	$2
 } $0
+endsnippet
+
+snippet in "Include directive" 
+#include <$1>$0
+endsnippet
+
+
+snippet "(\d+)?nl" "Variable newline" r
+`!p
+#snip.rv = f"\"{\""
+nl = "\\n"
+snip.rv =  f"\"{int(match.group(1)) * nl}\"" if match.group(1) else "\"\\n\""
+`
 endsnippet
