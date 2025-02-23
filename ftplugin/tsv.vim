@@ -1,0 +1,2 @@
+CsvViewToggle
+setlocal nowrap
