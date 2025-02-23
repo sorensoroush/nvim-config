@@ -47,3 +47,11 @@ nl = "\\n"
 snip.rv =  f"\"{int(match.group(1)) * nl}\"" if match.group(1) else "\"\\n\""
 `
 endsnippet
+
+
+snippet ffail "Test for file failure" 
+if ($1.fail()) {
+	cerr << "Error: File not found" << endl;
+	exit(2);
+}
+endsnippet
