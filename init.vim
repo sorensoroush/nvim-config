@@ -85,17 +85,20 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'SirVer/ultisnips'
 Plug 'lervag/vimtex'
+Plug 'hat0uma/csvview.nvim'
 
 call plug#end()
+
+lua require('csvview').setup()
 
 "----------------------------------------
 "         Vimtex Settings
 
 let maplocalleader = " "
-let g:vimtex_quickfix_mode = 1
 let g:vimtex_view_method = 'zathura'
 let g:vimtex_imaps_leader = ";"
-"let g:vimtex_quickfix_open_on_warning = 0
+let g:vimtex_quickfix_open_on_warning = 0
+"let g:vimtex_quickfix_mode = 1
 "let g:vimtex_quickfix_ignore_filters = [
 "            \ 'window ID'
 "            \]
