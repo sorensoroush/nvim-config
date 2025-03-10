@@ -24,6 +24,8 @@ set backspace=indent,eol,start
 set ignorecase smartcase
 set splitbelow
 
+set nrformats=alpha
+
 let g:netrw_keepdir = 0
 let g:netrw_banner = 0
 let g:netrw_list_hide= '\(^\|\s\s\)\zs\.\S\+'
@@ -86,6 +88,7 @@ Plug 'tpope/vim-repeat'
 Plug 'SirVer/ultisnips'
 Plug 'lervag/vimtex'
 Plug 'hat0uma/csvview.nvim'
+"Plug 'triglav/vim-visual-increment'
 
 call plug#end()
 

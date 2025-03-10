@@ -8,6 +8,31 @@ def math():
 endglobal
 
 # --------------------
+# 	Course Snippets
+# --------------------
+
+snippet 150ta "Template for a week of TA questions" 
+%============================================================ 
+%============================================================ 
+
+\section{Week $1}
+
+\subsection{Topics}
+
+$2
+
+\subsection{Questions}
+
+\begin{enumerate}$0
+\end{enumerate}
+
+\subsection{Answers}
+
+\begin{enumerate}
+\end{enumerate}
+endsnippet
+
+# --------------------
 #     Math snips
 # --------------------
 
@@ -202,6 +227,16 @@ snippet ol "Line over characters" "math()" ieA
 \overline{$1}
 endsnippet
 
+
+snippet ub "Underbrace" "math()" ieA
+\underbrace{$1}_{$2}
+endsnippet
+
+
+snippet ob "Overbrace" "math()" ieA
+\overbrace{$1}^{$2}
+endsnippet
+
 # --------------------
 #   Formatting snips
 # --------------------
@@ -320,7 +355,7 @@ endsnippet
 snippet dl "Description List"
 \begin{description}
 `!p
-snip.rv = re.sub('^(\s*)?(\\\\item\s)?(\[.+\])\s(.+)$', '\g<1>\t\\\\item\g<3> \g<4>', snip.v.text.strip(), flags=re.M)
+snip.rv = re.sub('^(\s*)?(\\\\item\s)?(\[.+\])(.+)', '\g<1>\t\\\\item\g<3>\g<4>', snip.v.text.strip(), flags=re.M)
 `
 \end{description}
 endsnippet
@@ -361,8 +396,10 @@ snippet mb "Mbox for keeping certain text unhyphenable"
 endsnippet
 
 
-snippet nl "Line break" 
+snippet nl "Newline (line break)" 
+%
 \\\[0.${1:25}cm]
+%
 endsnippet
 
 
@@ -381,6 +418,7 @@ snippet fig "Figure environment"
 	\centering
 	\includegraphics[
 		width=\textwidth
+		% scale=0.3
 	]{../.fig/$1}
 	\caption[$2]{$3}
 	\label{$4}
@@ -402,7 +440,7 @@ snippet col "Colored text"
 endsnippet
 
 
-snippet tag "Custom tag for equations" 
+snippet tg "Custom tag for equations" "math()" ieA
 \tag{$1}
 endsnippet
 

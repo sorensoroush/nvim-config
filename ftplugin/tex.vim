@@ -104,3 +104,8 @@ call vimtex#imaps#add_map({
     \ 'lhs' : 'ohl',
     \ 'rhs' : '\leftandright',
     \})
+
+call vimtex#imaps#add_map({
+    \ 'lhs' : 'os',
+    \ 'rhs' : '\star',
+    \})
