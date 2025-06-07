@@ -1,1 +1,1 @@
-noremap <Leader>r <CMD>term python3 %<CR>
+noremap <Leader>r <C-w>s<CMD>term python3 %<CR>
