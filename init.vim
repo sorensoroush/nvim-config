@@ -165,6 +165,7 @@ nnoremap <C-k> <Cmd>ALEPrevious<CR>
 " bright_yellow = '#fdee3a',
 " bright_orange = '#fdae3a'
 " bright_blue = '#9289c5', (Reverted)
+  "neutral_red = '#ad3e2a',
 " neutral_red = '#ad5e3a',
 " neutral_yellow = '#fdae3a'
 " neutral_aqua = '#66aeb9', (Reverted)
@@ -174,9 +175,14 @@ nnoremap <C-k> <Cmd>ALEPrevious<CR>
 " bright_yellow = '#fd5e3a',
 " bright_orange = '#fd5e3a',
 " bright_blue = '#e2d9c5',
+" bright_red = '#fd5e3a',
 " neutral_red = '#fd5e3a',
 " neutral_yellow = '#fd5e3a',
 " neutral_aqua = '#66def9',
+  "faded_red = '#fd5e3a',
+  "faded_orange = '#fa7a61',
+  "light_red = '#fc9487',
+  "dark_red = '#a22529',
 
 " --- Marks ---
 "  N = /home/soren-wsltp/.config/nvim/init.vim
