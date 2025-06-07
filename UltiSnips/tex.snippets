@@ -34,6 +34,34 @@ $2
 \end{enumerate}
 endsnippet
 
+snippet wlog "Weekly log template" 
+\chapter{$1}
+\section{$2}
+\subsection{Events}
+\subsection{Progress}
+\subsection{Journal}
+\rule{\linewidth}{.01mm}
+\section{$3}
+\subsection{Events}
+\subsection{Progress}
+\subsection{Journal}
+\rule{\linewidth}{.01mm}
+\section{$4}
+\subsection{Events}
+\subsection{Progress}
+\subsection{Journal}
+\rule{\linewidth}{.01mm}
+\section{$5}
+\subsection{Events}
+\subsection{Progress}
+\subsection{Journal}
+\rule{\linewidth}{.01mm}
+\section{$6}
+\subsection{Events}
+\subsection{Progress}
+\subsection{Journal}
+endsnippet
+
 # --------------------
 #     Math snips
 # --------------------
@@ -239,6 +267,16 @@ snippet ob "Overbrace" "math()" ieA
 \overbrace{$1}^{$2}
 endsnippet
 
+
+snippet fl "Floor operation" "math()" ieA
+\lfloor $1 \rfloor
+endsnippet
+
+
+snippet cl "Ceiling operation" "math()" ieA
+\lceil $1 \rceil
+endsnippet
+
 # --------------------
 #   Formatting snips
 # --------------------
@@ -277,6 +315,11 @@ $2
 endsnippet
 
 
+snippet com "Generic command" 
+\\$1{$2}
+endsnippet
+
+
 snippet ven "Generic environment wrapper (using visual placeholder)" 
 \begin{$1}
 `!p
@@ -307,22 +350,22 @@ endsnippet
 
 
 snippet chp "New chapter entry" 
-\chapter{$1}
+\chapter$1{$2}
 endsnippet
 
 
 snippet se "Section" 
-\section{$1}
+\section$1{$2}
 endsnippet
 
 
 snippet sse "Subsection" 
-\subsection{$1}
+\subsection$1{$2}
 endsnippet
 
 
 snippet sss "Subsubsection" 
-\subsubsection{$1}
+\subsubsection$1{$2}
 endsnippet
 
 
