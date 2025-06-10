@@ -277,6 +277,11 @@ snippet cl "Ceiling operation" "math()" ieA
 \lceil $1 \rceil
 endsnippet
 
+
+snippet %% "Modulus operation" "math()" ieA
+$1 \: \% \: $2
+endsnippet
+
 # --------------------
 #   Formatting snips
 # --------------------
@@ -346,6 +351,11 @@ endsnippet
 
 snippet bf "Boldens text" 
 \textbf{$1}
+endsnippet
+
+
+snippet und "Underline text" 
+\underline{$1}
 endsnippet
 
 
@@ -498,4 +508,11 @@ endsnippet
 
 snippet hr "Horizontal line" 
 \rule{\linewidth}{.01mm}
+endsnippet
+
+
+snippet code "Listing to display code" 
+\begin{lstlisting}[language=$1]
+`!v @"`
+\end{lstlisting}
 endsnippet
