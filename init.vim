@@ -26,6 +26,8 @@ set splitbelow
 
 set nrformats=alpha
 
+set foldmethod=indent
+
 let g:netrw_keepdir = 0
 let g:netrw_banner = 0
 let g:netrw_list_hide= '\(^\|\s\s\)\zs\.\S\+'
@@ -91,10 +93,17 @@ Plug 'SirVer/ultisnips'
 Plug 'lervag/vimtex'
 Plug 'hat0uma/csvview.nvim'
 "Plug 'triglav/vim-visual-increment'
+Plug 'numirias/semshi'
 
 call plug#end()
 
 lua require('csvview').setup()
+
+"----------------------------------------
+"         Semshi Settings
+
+let g:semshi#mark_selected_nodes = 2
+nmap <silent> <Leader>f <Cmd>Semshi toggle<CR>
 
 "----------------------------------------
 "         Vimtex Settings
@@ -134,6 +143,7 @@ nnoremap <Leader>S <Cmd>call UltiSnips#RefreshSnippets()<CR>
 "         EasyMotion Settings
 
 let g:EasyMotion_do_mapping = 0
+let g:EasyMotion_skipfoldedline = 0
 
 map <Leader> <Plug>(easymotion-prefix)
 map <Leader>d <Plug>(easymotion-overwin-w)
