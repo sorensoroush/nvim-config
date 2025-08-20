@@ -14,19 +14,17 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 set shiftround
-
 set iskeyword-=_
+set iskeyword-=:
 set linebreak
 set breakindent
 set autoindent
 set backspace=indent,eol,start
-
 set ignorecase smartcase
 set splitbelow
-
 set nrformats=alpha
-
 set foldmethod=indent
+set spelloptions=camel
 
 let g:netrw_keepdir = 0
 let g:netrw_banner = 0
@@ -59,6 +57,10 @@ nnoremap <Leader>r @:
 nnoremap <Leader>v <C-w>s<Cmd>e $NVIM/ftplugin/%:e.vim<CR>
 nnoremap <A-f> <C-w>s'F<Cmd>Ex<CR>
 nnoremap <A-t> <C-w>s<C-w>T<Cmd>Ex<CR>
+nnoremap <A-h> <C-w>s'H
+nnoremap <Leader>c <Cmd>setlocal invspell spelllang=en_us<CR>
+nnoremap <Leader>g viwzg
+nnoremap <Leader>G viwzug
 
 tnoremap <A-q> <C-\><C-n><Cmd>q<CR>
 
