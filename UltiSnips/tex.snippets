@@ -41,31 +41,37 @@ snippet wlog "Weekly log template"
 \subsection{Progress}
 \subsection{Journal}
 \subsection{Plans (for next day)}
-\rule{\linewidth}{.01mm}
-\section{$3}
-\subsection{Events}
-\subsection{Progress}
-\subsection{Journal}
-\subsection{Plans (for next day)}
-\rule{\linewidth}{.01mm}
-\section{$4}
-\subsection{Events}
-\subsection{Progress}
-\subsection{Journal}
-\subsection{Plans (for next day)}
-\rule{\linewidth}{.01mm}
-\section{$5}
-\subsection{Events}
-\subsection{Progress}
-\subsection{Journal}
-\subsection{Plans (for next day)}
-\rule{\linewidth}{.01mm}
-\section{$6}
-\subsection{Events}
-\subsection{Progress}
-\subsection{Journal}
-\subsection{Plans (for next day)}
+%\rule{\linewidth}{.01mm}
+%\section{$3}
+%\subsection{Events}
+%\subsection{Progress}
+%\subsection{Journal}
+%\subsection{Plans (for next day)}
+%\rule{\linewidth}{.01mm}
+%\section{$4}
+%\subsection{Events}
+%\subsection{Progress}
+%\subsection{Journal}
+%\subsection{Plans (for next day)}
+%\rule{\linewidth}{.01mm}
+%\section{$5}
+%\subsection{Events}
+%\subsection{Progress}
+%\subsection{Journal}
+%\subsection{Plans (for next day)}
+%\rule{\linewidth}{.01mm}
+%\section{$6}
+%\subsection{Events}
+%\subsection{Progress}
+%\subsection{Journal}
+%\subsection{Plans (for next day)}
 endsnippet
+
+
+snippet je "Journal entry for weekly log" 
+\item[`date +%-l:%M%#p`]
+endsnippet
+
 
 # --------------------
 #     Math snips
@@ -164,7 +170,7 @@ snippet ee "Exponent" "math()" ieA
 endsnippet
 
 
-snippet ss "Subscript" "math()" ieA
+snippet S "Subscript" "math()" ieA
 _{$1}
 endsnippet
 
@@ -185,6 +191,11 @@ endsnippet
 
 snippet prf "Page reference" 
 \pageref{$1}
+endsnippet
+
+
+snippet tg "Custom tag for equations" "math()" ieA
+\tag{$1}
 endsnippet
 
 
@@ -287,6 +298,7 @@ snippet %% "Modulus operation" "math()" ieA
 $1 \: \% \: $2
 endsnippet
 
+
 # --------------------
 #   Formatting snips
 # --------------------
@@ -295,15 +307,15 @@ endsnippet
 snippet doc "Begin a text document" 
 \documentclass{${1:article}}
 
-\usepackage{${2:amsmath}}
+$2
 
 \author{Soren S.}
 \title{$3}
-\date{\today}
+\date{\today \\ \small (last edit)}
 
 \begin{document}
 \maketitle
-\tableofcontents
+% \tableofcontents
 % ---------------
 
 $0
@@ -416,7 +428,7 @@ snippet dl "Description List"
 \begin{description}
 `!p
 snip.rv = re.sub('^(\s*)?(\\\\item\s)?(\[.+\])(.+)', '\g<1>\t\\\\item\g<3>\g<4>', snip.v.text.strip(), flags=re.M)
-`
+`$0
 \end{description}
 endsnippet
 
@@ -501,11 +513,6 @@ snippet col "Colored text"
 endsnippet
 
 
-snippet tg "Custom tag for equations" "math()" ieA
-\tag{$1}
-endsnippet
-
-
 snippet phan "Phantom character" i
 \phantom{$1}
 endsnippet
@@ -520,4 +527,56 @@ snippet code "Listing to display code"
 \begin{lstlisting}[language=$1]
 `!v @"`
 \end{lstlisting}
+endsnippet
+
+
+# --------------------
+#     TikZ snips
+# --------------------
+
+
+snippet tp "TikZ picture" 
+\begin{tikzpicture}
+$1
+\end{tikzpicture}
+endsnippet
+
+
+snippet d "Draw"
+\draw[$1] $2;
+endsnippet
+
+
+snippet c "Cartesian coordinates" 
+($1,$2)
+endsnippet
+
+
+snippet l "Length / Line (for named objects)" 
+($1)
+endsnippet
+
+
+snippet p "Polar coordinates" 
+($1:$2)
+endsnippet
+
+
+snippet f "Fill" 
+\fill[$1] 
+endsnippet
+
+
+snippet fd "Filldraw" 
+\filldraw[$1] 
+endsnippet
+
+
+snippet n "Node" 
+\node ($1) at ($2,$3) {$4};
+endsnippet
+
+
+snippet co "Coordinate" 
+\coordinate ($1) at ($2,$3);
 endsnippet
