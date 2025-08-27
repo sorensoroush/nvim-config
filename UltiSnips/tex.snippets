@@ -184,6 +184,7 @@ snippet rf "Reference"
 \ref{$1}
 endsnippet
 
+
 snippet erf "Equation reference" "math()" ieA
 \eqref{$1}
 endsnippet
@@ -299,6 +300,23 @@ $1 \: \% \: $2
 endsnippet
 
 
+snippet mat "Matrix"
+\begin{${1:b}matrix}
+`!p
+subbed = snip.v.text
+subbed = re.sub("(\w) ", "\g<1> & ", subbed)
+subbed = re.sub("\n", " \\\\\\\\\n\t", subbed)
+snip.rv = subbed.rstrip()
+`
+\end{$1matrix}
+endsnippet
+
+
+snippet se "Set notation" "math()" ieA
+\\{$1\\}
+endsnippet
+
+
 # --------------------
 #   Formatting snips
 # --------------------
@@ -372,7 +390,7 @@ endsnippet
 
 
 snippet und "Underline text" 
-\underline{$1}
+\underline{${VISUAL}}
 endsnippet
 
 
@@ -398,6 +416,9 @@ endsnippet
 
 snippet par "Paragraph ('subsubsubsection')" 
 \paragraph{$1}
+${2:\phantom{}
+
+}
 endsnippet
 
 
@@ -470,7 +491,7 @@ endsnippet
 
 snippet nl "Newline (line break)" 
 %
-\\\[0.${1:25}cm]
+\\\[0.25cm]
 %
 $0
 endsnippet
@@ -579,4 +600,27 @@ endsnippet
 
 snippet co "Coordinate" 
 \coordinate ($1) at ($2,$3);
+endsnippet
+
+
+snippet the "Theorem environment" 
+\begin{${1:theorem}}[$2]
+	$3
+\end{$1}
+endsnippet
+
+
+snippet pro "Proof" 
+\begin{proof}
+	$1
+\end{proof}
+endsnippet
+
+
+snippet pl "Plot" 
+plot(\\${1:x}, {$2})
+endsnippet
+
+snippet x "X (for plots)" i
+(\x)
 endsnippet
