@@ -109,3 +109,20 @@ call vimtex#imaps#add_map({
     \ 'lhs' : 'os',
     \ 'rhs' : '\star',
     \})
+
+call vimtex#imaps#add_map({
+    \ 'lhs' : 'o(',
+    \ 'rhs' : '\not\subset',
+    \})
+
+call vimtex#imaps#add_map({
+    \ 'lhs' : 'o[',
+    \ 'rhs' : '\not\subseteq',
+    \})
+
+call vimtex#imaps#add_map({
+    \ 'lhs' : 'ow',
+    \ 'rhs' : '\mathcal{P}',
+    \})
+
+set iskeyword-=:
