@@ -78,11 +78,6 @@ endsnippet
 # --------------------
 
 
-snippet mm "Inline math" 
-\$$1\$
-endsnippet
-
-
 snippet rq "Square root" "math()" ieA
 \sqrt{$1}
 endsnippet
@@ -150,7 +145,7 @@ snippet fx "Box"
 endsnippet
 
 
-snippet bx "Box (math mode environment)"
+snippet bx "Box (math mode environment)" "math()" ieA
 \boxed{$1}
 endsnippet
 
@@ -165,7 +160,7 @@ snippet ra "Right arrow (with text)" "math()" ieA
 endsnippet
 
 
-snippet ee "Exponent" "math()" ieA
+snippet E "Exponent" "math()" ieA
 ^{$1}
 endsnippet
 
@@ -317,6 +312,151 @@ snippet se "Set notation" "math()" ieA
 endsnippet
 
 
+snippet vv "Vector" "math()" ieA
+\vec{$1}
+endsnippet
+
+
+snippet ha "Hat" "math()" ieA
+\hat{$1}
+endsnippet
+
+
+snippet ag "Angled brackets" "math()" ieA
+\lang $1 \rangle
+endsnippet
+
+
+snippet oo "Union of elements" "math()" ieA
+\bigcup_{$1}^{$2}
+endsnippet
+
+
+snippet aa "Intersection of elements" "math()" ieA
+\bigcap_{$1}^{$2}
+endsnippet
+
+
+snippet bs "Big set notation (for set of sets)" "math()" ieA
+\Bigl\\{$1\Bigl\\}
+endsnippet
+
+
+snippet C "Coordinate" "math()" ieA
+($1,$2)
+endsnippet
+
+
+# --------------------
+#     TikZ snips
+# --------------------
+
+
+snippet tp "TikZ picture" 
+\begin{tikzpicture}
+$1
+\end{tikzpicture}
+endsnippet
+
+
+snippet d "Draw"
+\draw[$1] $2;
+endsnippet
+
+
+snippet c "Cartesian coordinates" 
+($1,$2)
+endsnippet
+
+
+snippet l "Length / Line (for named objects)" 
+($1)
+endsnippet
+
+
+snippet p "Polar coordinates" 
+($1:$2)
+endsnippet
+
+
+snippet f "Fill" 
+\fill[$1] 
+endsnippet
+
+
+snippet fd "Filldraw" 
+\filldraw[fill=${1:green}, draw=${2:black}, ${3:very thick}$4] 
+endsnippet
+
+
+snippet nn "Node command" 
+\node[$1] ($2) at ($3,$4) {$5};
+endsnippet
+
+
+snippet co "Coordinate" 
+\coordinate ($1) at ($2,$3);
+endsnippet
+
+
+snippet pl "Plot" 
+plot(\\${1:x}, {$2})
+endsnippet
+
+
+snippet ax "Axis" 
+\\begin{axis}[axis x line=middle, axis y line=middle, xlabel={$x$}, ylabel={$y$}, axis equal, %
+	xtick={${1:-3,-2,...,3}}, ytick={${2:-3,-2,...,3}}, xmin=${3:-3}, xmax=${4:3}, ymin=${5:-3}, ymax=${6:3},$7]
+	$8
+\\end{axis}
+endsnippet
+
+
+snippet n "Node" 
+node[$1] {$2}
+endsnippet
+
+
+snippet fe "Foreach" 
+\\foreach \\$1 in {$2}
+	$0
+endsnippet
+
+snippet fef "Foreach fix" 
+% To allow nested foreach with axis coordinates
+\pgfplotsset{
+	save axis cs/.style={
+		before end axis/.append code={
+			\coordinate (save-axis-cs-O) at (axis cs:0,0,0);
+			\coordinate (save-axis-cs-X) at (axis cs:1,0,0);
+			\coordinate (save-axis-cs-Y) at (axis cs:0,1,0);
+			\coordinate (save-axis-cs-Z) at (axis cs:0,0,1);            
+		}    
+	}
+}
+\tikzset{
+	restore axis cs/.style={
+		x={($(save-axis-cs-X)-(save-axis-cs-O)$)},
+		y={($(save-axis-cs-Y)-(save-axis-cs-O)$)},
+		z={($(save-axis-cs-Z)-(save-axis-cs-O)$)},
+		shift={(save-axis-cs-O)}    
+	}
+}
+endsnippet
+
+
+snippet sco "Scope (for foreach fix)" 
+\begin{scope}[restore axis cs]
+	$1
+\end{scope}
+endsnippet
+
+
+snippet tl "TikZ Library" 
+\usetikzlibrary{$1}
+endsnippet
+
+
 # --------------------
 #   Formatting snips
 # --------------------
@@ -325,6 +465,8 @@ endsnippet
 snippet doc "Begin a text document" 
 \documentclass{${1:article}}
 
+\usepackage{amsmath}
+\usepackage{amssymb}
 $2
 
 \author{Soren S.}
@@ -389,8 +531,8 @@ snippet bf "Boldens text"
 endsnippet
 
 
-snippet und "Underline text" 
-\underline{${VISUAL}}
+snippet und "Underline text" i
+\underline{\smash{$1}}
 endsnippet
 
 
@@ -440,6 +582,7 @@ snippet ul "Unordered List"
 \begin{itemize}
 `!p
 snip.rv = re.sub('(\s*)(\\\\item)?(.+)$', '\g<1>\t\\\\item \g<3>', snip.v.text.strip(), flags=re.M)
+#snip.rv = re.sub('(\s*)(\\\\item)?(\[\w*\])?(.+)$', '\g<1>\t\\\\item\[ \g<4>', snip.v.text.strip(), flags=re.M)
 `
 \end{itemize}
 endsnippet
@@ -455,7 +598,7 @@ endsnippet
 
 
 snippet tab "Table with formatting" 
-\begin{table}[htbp]
+\begin{table}
 	\centering
 	\begin{tabular}{${1:column justifications}}
 `!p 
@@ -546,61 +689,10 @@ endsnippet
 
 snippet code "Listing to display code" 
 \begin{lstlisting}[language=$1]
-`!v @"`
+	$2
 \end{lstlisting}
 endsnippet
 
-
-# --------------------
-#     TikZ snips
-# --------------------
-
-
-snippet tp "TikZ picture" 
-\begin{tikzpicture}
-$1
-\end{tikzpicture}
-endsnippet
-
-
-snippet d "Draw"
-\draw[$1] $2;
-endsnippet
-
-
-snippet c "Cartesian coordinates" 
-($1,$2)
-endsnippet
-
-
-snippet l "Length / Line (for named objects)" 
-($1)
-endsnippet
-
-
-snippet p "Polar coordinates" 
-($1:$2)
-endsnippet
-
-
-snippet f "Fill" 
-\fill[$1] 
-endsnippet
-
-
-snippet fd "Filldraw" 
-\filldraw[$1] 
-endsnippet
-
-
-snippet n "Node" 
-\node ($1) at ($2,$3) {$4};
-endsnippet
-
-
-snippet co "Coordinate" 
-\coordinate ($1) at ($2,$3);
-endsnippet
 
 
 snippet the "Theorem environment" 
@@ -617,10 +709,43 @@ snippet pro "Proof"
 endsnippet
 
 
-snippet pl "Plot" 
-plot(\\${1:x}, {$2})
+snippet i "Item" 
+\item 
 endsnippet
 
-snippet x "X (for plots)" i
-(\x)
+
+snippet pic "Graphic included simply" 
+\includegraphics[width=\textwidth]{../.fig/$1}
+endsnippet
+
+
+snippet ' "Quotes for text" i
+\`\`$1''
+endsnippet
+
+
+snippet sc "Set counter" 
+\setcounter{$1}{$2}
+endsnippet
+
+
+snippet msm "Inline math mode" A
+\$$1\$
+endsnippet
+
+
+snippet ic "Item & skip counter" 
+	\setcounter{enumi}{$1}
+\item $2
+endsnippet
+
+snippet mpack "Math packages" 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{pgfplots}
+
+\usetikzlibrary{calc}
+
+\pgfplotsset{compat=1.18}
 endsnippet
