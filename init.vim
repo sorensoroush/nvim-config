@@ -61,6 +61,10 @@ nnoremap <A-h> <C-w>s'H
 nnoremap <Leader>c <Cmd>setlocal invspell spelllang=en_us<CR>
 nnoremap <Leader>g viwzg
 nnoremap <Leader>G viwzug
+nnoremap <Leader>D <Cmd>vertical diffsplit [diff-file]<CR>
+"nnoremap <A-z> mfmx zathura %<CR>
+nnoremap <A-w> <C-w>s<Cmd>e questions<CR>
+
 
 tnoremap <A-q> <C-\><C-n><Cmd>q<CR>
 
