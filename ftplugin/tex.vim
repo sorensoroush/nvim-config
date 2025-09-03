@@ -31,6 +31,16 @@ call vimtex#imaps#add_map({
     \})
 
 call vimtex#imaps#add_map({
+    \ 'lhs' : 'oK',
+    \ 'rhs' : '\mathbb{K}',
+    \})
+
+call vimtex#imaps#add_map({
+    \ 'lhs' : 'oP',
+    \ 'rhs' : '\mathbb{P}',
+    \})
+
+call vimtex#imaps#add_map({
     \ 'lhs' : 'ou',
     \ 'rhs' : '\cup',
     \})
@@ -71,7 +81,7 @@ call vimtex#imaps#add_map({
     \})
 
 call vimtex#imaps#add_map({
-    \ 'lhs' : 'oP',
+    \ 'lhs' : 'oop',
     \ 'rhs' : '\succ',
     \})
 
@@ -86,7 +96,7 @@ call vimtex#imaps#add_map({
     \})
 
 call vimtex#imaps#add_map({
-    \ 'lhs' : 'oo',
+    \ 'lhs' : 'oor',
     \ 'rhs' : '\vee',
     \})
 
@@ -123,6 +133,11 @@ call vimtex#imaps#add_map({
 call vimtex#imaps#add_map({
     \ 'lhs' : 'ow',
     \ 'rhs' : '\mathcal{P}',
+    \})
+
+call vimtex#imaps#add_map({
+    \ 'lhs' : 'om',
+    \ 'rhs' : '\models',
     \})
 
 set iskeyword-=:
