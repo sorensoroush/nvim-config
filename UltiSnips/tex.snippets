@@ -99,7 +99,7 @@ endsnippet
 
 
 snippet tt "Text in math context" "math()" ieA
-\text{$1}
+\quad \text{$1} \quad 
 endsnippet
 
 
@@ -328,12 +328,12 @@ endsnippet
 
 
 snippet oo "Union of elements" "math()" ieA
-\bigcup_{$1}^{$2}
+\bigcup\limits_{$1}^{$2}
 endsnippet
 
 
 snippet aa "Intersection of elements" "math()" ieA
-\bigcap_{$1}^{$2}
+\bigcap\limits_{$1}^{$2}
 endsnippet
 
 
@@ -347,6 +347,20 @@ snippet C "Coordinate" "math()" ieA
 endsnippet
 
 
+snippet : "Extra whitespace for :" 
+\;\; : \;\;
+endsnippet
+
+
+snippet , "Extra whitespace for ," 
+\;\; , \;\;
+endsnippet
+
+
+snippet | "Extra whitespace for |" 
+\;\; | \;\;
+endsnippet
+
 # --------------------
 #     TikZ snips
 # --------------------
@@ -354,7 +368,7 @@ endsnippet
 
 snippet tp "TikZ picture" 
 \begin{tikzpicture}
-$1
+	$1
 \end{tikzpicture}
 endsnippet
 
@@ -457,6 +471,16 @@ snippet tl "TikZ Library"
 endsnippet
 
 
+snippet an "Automata node" 
+\node[state, $1] ($2) {\$$3\$};
+endsnippet
+
+
+snippet ad "Automata draw" 
+\draw ($1) edge[$2] node{\$$3\$} ($4);
+endsnippet
+
+
 # --------------------
 #   Formatting snips
 # --------------------
@@ -465,8 +489,7 @@ endsnippet
 snippet doc "Begin a text document" 
 \documentclass{${1:article}}
 
-\usepackage{amsmath}
-\usepackage{amssymb}
+\usepackage{parskip}
 $2
 
 \author{Soren S.}
@@ -476,6 +499,27 @@ $2
 \begin{document}
 \maketitle
 % \tableofcontents
+% ---------------
+
+$0
+
+% ---------------
+\end{document}
+endsnippet
+
+
+snippet hw "Homework template" 
+\documentclass[twocolumn]{article}
+
+\usepackage{parskip}
+$1
+
+\author{Soren Soroush}
+\title{HW \#$2 \\ \small ($3)}
+\date{\today}
+
+\begin{document}
+\maketitle
 % ---------------
 
 $0
@@ -537,30 +581,35 @@ endsnippet
 
 
 snippet chp "New chapter entry" 
-\chapter$1{$2}
+\chapter${1:*}{$2}
 endsnippet
 
 
 snippet se "Section" 
-\section$1{$2}
+\section${1:*}{$2}
 endsnippet
 
 
 snippet sse "Subsection" 
-\subsection$1{$2}
+\subsection${1:*}{$2}
 endsnippet
 
 
 snippet sss "Subsubsection" 
-\subsubsection$1{$2}
+\subsubsection${1:*}{$2}
+endsnippet
+
+
+snippet pp "Paragraph ('subsubsubsection')" 
+\paragraph{$1}
+\phantom{}
+
+
 endsnippet
 
 
 snippet par "Paragraph ('subsubsubsection')" 
 \paragraph{$1}
-${2:\phantom{}
-
-}
 endsnippet
 
 
@@ -573,7 +622,7 @@ snippet ol "Ordered List"
 \begin{enumerate}
 `!p
 snip.rv = re.sub('(\s*)(\\\\item)?(\[.+\])?(\s)?(.+)$', '\g<1>\t\\\\item\g<3> \g<5>', snip.v.text.strip(), flags=re.M)
-`
+`	$0
 \end{enumerate}
 endsnippet
 
@@ -597,29 +646,45 @@ snip.rv = re.sub('^(\s*)?(\\\\item\s)?(\[.+\])(.+)', '\g<1>\t\\\\item\g<3>\g<4>'
 endsnippet
 
 
-snippet tab "Table with formatting" 
-\begin{table}
-	\centering
-	\begin{tabular}{${1:column justifications}}
-`!p 
-subbed_text = re.sub(r'^(.+)$', '        \g<1> \\\\\\\\', snip.v.text.strip(), flags=re.M)
-snip.rv += re.sub(r'^\s{4,}(top|mid|bottom)\W*$', '        \\\\\g<1>rule', subbed_text, flags=re.M)
-`
-	\end{tabular}
-	\caption[$2]{$3}
-	\label{$4}
-\end{table}
-endsnippet
+#snippet tab "Table with formatting" 
+#\begin{table}
+#	\centering
+#	\begin{tabular}{${1:column justifications}}
+#`!p 
+#subbed_text = re.sub(r'^(.+)$', '        \g<1> \\\\\\\\', snip.v.text.strip(), flags=re.M)
+#snip.rv += re.sub(r'^\s{4,}(top|mid|bottom)\W*$', '        \\\\\g<1>rule', subbed_text, flags=re.M)
+#`
+#	\end{tabular}
+#	\caption[$2]{$3}
+#	\label{$4}
+#\end{table}
+#endsnippet
+#
+#snippet tabu "Table without formatting" 
+#\begin{tabular}{${1:column justifications}}
+#`!p 
+#subbed_text = re.sub(r'^(.+)$', '    \g<1> \\\\\\\\', snip.v.text.strip(), flags=re.M)
+#snip.rv += re.sub(r'^\s{4,}(top|mid|bottom)\W*$', '    \\\\\g<1>rule', subbed_text, flags=re.M)
+#`
+#\end{tabular}
+#endsnippet
 
-snippet tabu "Table without formatting" 
-\begin{tabular}{${1:column justifications}}
-`!p 
-subbed_text = re.sub(r'^(.+)$', '    \g<1> \\\\\\\\', snip.v.text.strip(), flags=re.M)
-snip.rv += re.sub(r'^\s{4,}(top|mid|bottom)\W*$', '    \\\\\g<1>rule', subbed_text, flags=re.M)
+
+snippet tab "Table" 
+\begin{center}
+\begin{tabular}{$1}
+`!p
+subbed = snip.v.text
+subbed = re.sub(r'\n\Z', '', subbed)
+subbed = re.sub(r'^(.*\S)$', '\g<1> \\\\\\\\', subbed, flags=re.M)
+subbed = re.sub(r'^(\s*?)$', '\g<1>\\\\hline', subbed, flags=re.M)
+subbed = re.sub(r'(\S)  ', '\g<1> & ', subbed, flags=re.M)
+#snip.reset_indent()
+snip.rv = subbed
 `
 \end{tabular}
+\end{center}
 endsnippet
-
 
 
 snippet nw "Section-based numbering" 
@@ -688,8 +753,8 @@ endsnippet
 
 
 snippet code "Listing to display code" 
-\begin{lstlisting}[language=$1]
-	$2
+\begin{lstlisting}[language=${1:c++}]
+$2
 \end{lstlisting}
 endsnippet
 
@@ -729,15 +794,16 @@ snippet sc "Set counter"
 endsnippet
 
 
-snippet msm "Inline math mode" A
+snippet msm "Inline math mode" iA
 \$$1\$
 endsnippet
 
 
 snippet ic "Item & skip counter" 
-	\setcounter{enumi}{$1}
-\item $2
+	\setcounter{enumi$1}{$2}
+\item $3
 endsnippet
+
 
 snippet mpack "Math packages" 
 \usepackage{amsmath}
@@ -748,4 +814,31 @@ snippet mpack "Math packages"
 \usetikzlibrary{calc}
 
 \pgfplotsset{compat=1.18}
+endsnippet
+
+
+snippet sl "Set length" 
+\setlength{${1:\parindent}}{${2:0pt}}
+endsnippet
+
+
+snippet lid "List item dot"
+\renewcommand\labelitemi{$\cdot$}
+endsnippet
+
+
+snippet al "Automata libraries" 
+\usetikzlibrary{automata, positioning, arrows}
+\tikzset{->, % makes the edges directed
+	>=stealth, % makes the arrow heads bold
+	node distance=3cm, % specifies the minimum distance between two nodes. Change if necessary.
+	every state/.style={thick, fill=gray!10}, % sets the properties for each state node
+	initial text=$ $, % sets the text that appears on the start arrow
+}
+
+endsnippet
+
+
+snippet cla "Claim (theorem template)" 
+\newtheorem${1:*}{${2:claim}}{${3:Claim}}
 endsnippet
