@@ -133,7 +133,7 @@ snippet ml "Multilined equation (using split)"
 endsnippet
 
 
-snippet me "Gather (multiple equations)" 
+snippet ga "Gather (multiple equations)" 
 \begin{gather${1:*}}
 	$2
 \end{gather$1}
@@ -294,7 +294,7 @@ snippet %% "Modulus operation" "math()" ieA
 $1 \: \% \: $2
 endsnippet
 
-
+# p=(), b=[], B={}, v=||, V=||||, small
 snippet mat "Matrix"
 \begin{${1:b}matrix}
 `!p
@@ -323,7 +323,7 @@ endsnippet
 
 
 snippet ag "Angled brackets" "math()" ieA
-\lang $1 \rangle
+\langle $1 \rangle
 endsnippet
 
 
@@ -348,17 +348,32 @@ endsnippet
 
 
 snippet : "Extra whitespace for :" 
-\;\; : \;\;
+\; : \;
 endsnippet
 
 
 snippet , "Extra whitespace for ," 
-\;\; , \;\;
+\; , \;
 endsnippet
 
 
 snippet | "Extra whitespace for |" 
-\;\; | \;\;
+\; | \;
+endsnippet
+
+
+snippet ab "Absolute value" "math()" ieA
+|$1|
+endsnippet
+
+
+snippet P "Parentheses" "math()" ieA
+($1)
+endsnippet
+
+
+snippet B "Brackets" "math()" ieA
+[$1]
 endsnippet
 
 # --------------------
@@ -418,9 +433,16 @@ plot(\\${1:x}, {$2})
 endsnippet
 
 
+# Tinker with settings
 snippet ax "Axis" 
-\\begin{axis}[axis x line=middle, axis y line=middle, xlabel={$x$}, ylabel={$y$}, axis equal, %
-	xtick={${1:-3,-2,...,3}}, ytick={${2:-3,-2,...,3}}, xmin=${3:-3}, xmax=${4:3}, ymin=${5:-3}, ymax=${6:3},$7]
+\\begin{axis}[
+	axis x line=middle, axis y line=middle, 
+	xlabel={$x$}, ylabel={$y$}, 
+	axis equal,
+	xtick={${1:-3,-2,...,3}}, ytick={${2:-3,-2,...,3}},
+	xmin=${3:-3}, xmax=${4:3},
+	ymin=${5:-3}, ymax=${6:3},
+	$7]
 	$8
 \\end{axis}
 endsnippet
@@ -480,6 +502,31 @@ snippet ad "Automata draw"
 \draw ($1) edge[$2] node{\$$3\$} ($4);
 endsnippet
 
+
+snippet ap "2D plot" 
+\addplot[domain=$1:$2] {$3};
+endsnippet
+
+
+snippet app "3D plot" 
+\addplot3[domain=$1:$2] {$3};
+endsnippet
+
+
+# Tinker with settings
+snippet axx "3D axis" 
+\\begin{axis}[
+	view={35}{15},
+	axis lines=center,
+	width=15cm,height=15cm,
+	xtick={-10,-5,5,10}, ytick={-10,-5,5,10}, ztick={-10,-5,5,10},
+	minor tick={-12,-11,...,12},
+	xmin=-13, xmax=13, ymin=-13, ymax=13, zmin=-13, zmax=13,
+	xlabel={$x$-axis}, ylabel={$y$-axis}, zlabel={$z$-axis},
+	]
+	$1
+\\end{axis}
+endsnippet
 
 # --------------------
 #   Formatting snips
@@ -541,7 +588,7 @@ $2
 endsnippet
 
 
-snippet com "Generic command" 
+snippet cmm "Generic command" 
 \\$1{$2}
 endsnippet
 
@@ -841,4 +888,9 @@ endsnippet
 
 snippet cla "Claim (theorem template)" 
 \newtheorem${1:*}{${2:claim}}{${3:Claim}}
+endsnippet
+
+
+snippet com "Comment" 
+---($1)---
 endsnippet
