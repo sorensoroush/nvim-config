@@ -226,42 +226,22 @@ endsnippet
 
 
 snippet bl "Big left (1/4)" "math()" ieA
-\bigl
-endsnippet
-
-
-snippet br "Big right (1/4)" "math()" ieA
-\bigr
+\bigl$1 $3 \bigr$2
 endsnippet
 
 
 snippet bL "Big left (2/4)" "math()" ieA
-\Bigl
-endsnippet
-
-
-snippet bR "Big right (2/4)" "math()" ieA
-\Bigr
+\Bigl$1 $3 \Bigr$2
 endsnippet
 
 
 snippet Bl "Big left (3/4)" "math()" ieA
-\biggl
-endsnippet
-
-
-snippet Br "Big right (3/4)" "math()" ieA
-\biggr
+\biggl$1 $3 \biggr$2
 endsnippet
 
 
 snippet BL "Big left (4/4)" "math()" ieA
-\Biggl
-endsnippet
-
-
-snippet BR "Big right (4/4)" "math()" ieA
-\Biggr
+\Biggl$1 $3 \Biggr$2
 endsnippet
 
 
@@ -296,12 +276,12 @@ endsnippet
 
 # p=(), b=[], B={}, v=||, V=||||, small
 snippet mat "Matrix"
-\begin{${1:b}matrix}
+\begin{${1:p}matrix*}[r]
 `!p
-subbed = snip.v.text
+subbed = snip.v.text.lstrip()
 subbed = re.sub("(\w) ", "\g<1> & ", subbed)
 subbed = re.sub("\n", " \\\\\\\\\n\t", subbed)
-snip.rv = subbed.rstrip()
+snip.rv = "\t" + subbed.rstrip()
 `
 \end{$1matrix}
 endsnippet
@@ -342,11 +322,6 @@ snippet bs "Big set notation (for set of sets)" "math()" ieA
 endsnippet
 
 
-snippet C "Coordinate" "math()" ieA
-($1,$2)
-endsnippet
-
-
 snippet : "Extra whitespace for :" 
 \; : \;
 endsnippet
@@ -372,9 +347,15 @@ snippet P "Parentheses" "math()" ieA
 endsnippet
 
 
-snippet B "Brackets" "math()" ieA
+snippet R "Brackets" "math()" ieA
 [$1]
 endsnippet
+
+
+snippet ov "Overset" "math()" ieA
+\overset{$1}{$2}
+endsnippet
+
 
 # --------------------
 #     TikZ snips
@@ -436,7 +417,7 @@ endsnippet
 # Tinker with settings
 snippet ax "Axis" 
 \\begin{axis}[
-	axis x line=middle, axis y line=middle, 
+	axis lines=middle,
 	xlabel={$x$}, ylabel={$y$}, 
 	axis equal,
 	xtick={${1:-3,-2,...,3}}, ytick={${2:-3,-2,...,3}},
@@ -449,7 +430,7 @@ endsnippet
 
 
 snippet n "Node" 
-node[$1] {$2}
+node[$1] ($2) {$3} 
 endsnippet
 
 
@@ -508,8 +489,20 @@ snippet ap "2D plot"
 endsnippet
 
 
+snippet apm "2D parametric plot" 
+\addplot[domain=$1:$2,$3
+	postaction={decorate},
+	decoration={markings, 
+		mark=at position 0.25 with {\arrow{stealth}},
+		mark=at position 0.5  with {\arrow{stealth}},
+		mark=at position 0.75 with {\arrow{stealth}}}
+	] ({$4},{$5});
+endsnippet
+
+
 snippet app "3D plot" 
-\addplot3[domain=$1:$2] {$3};
+\addplot3[domain=$1:$2,
+	$3] {$4};
 endsnippet
 
 
@@ -522,11 +515,17 @@ snippet axx "3D axis"
 	xtick={-10,-5,5,10}, ytick={-10,-5,5,10}, ztick={-10,-5,5,10},
 	minor tick={-12,-11,...,12},
 	xmin=-13, xmax=13, ymin=-13, ymax=13, zmin=-13, zmax=13,
-	xlabel={$x$-axis}, ylabel={$y$-axis}, zlabel={$z$-axis},
+	xlabel={$x$}, ylabel={$y$}, zlabel={$z$},
 	]
 	$1
 \\end{axis}
 endsnippet
+
+
+snippet vd "Vector draw" 
+\draw[$1, ->, very thick]
+endsnippet
+
 
 # --------------------
 #   Formatting snips
@@ -537,11 +536,22 @@ snippet doc "Begin a text document"
 \documentclass{${1:article}}
 
 \usepackage{parskip}
+\usepackage{hyperref}
+
+\setcounter{secnumdepth}{-1}
+\setcounter{tocdepth}{3}
+
+\hypersetup{
+	colorlinks=true, 
+	linktoc=all,    
+	linkcolor=black
+}
+
 $2
 
 \author{Soren S.}
 \title{$3}
-\date{\today \\ \small (last edit)}
+\date{\today \\\\ \small (last edit)}
 
 \begin{document}
 \maketitle
@@ -562,8 +572,8 @@ snippet hw "Homework template"
 $1
 
 \author{Soren Soroush}
-\title{HW \#$2 \\ \small ($3)}
-\date{\today}
+\title{HW \#$2 \\\\ \small ($3)}
+\date{\today \\\\ \small (last edit)}
 
 \begin{document}
 \maketitle
@@ -628,22 +638,22 @@ endsnippet
 
 
 snippet chp "New chapter entry" 
-\chapter${1:*}{$2}
+\chapter{$1}
 endsnippet
 
 
 snippet se "Section" 
-\section${1:*}{$2}
+\section{$1}
 endsnippet
 
 
 snippet sse "Subsection" 
-\subsection${1:*}{$2}
+\subsection{$1}
 endsnippet
 
 
 snippet sss "Subsubsection" 
-\subsubsection${1:*}{$2}
+\subsubsection{$1}
 endsnippet
 
 
@@ -841,7 +851,7 @@ snippet sc "Set counter"
 endsnippet
 
 
-snippet msm "Inline math mode" iA
+snippet sd "Inline math mode" iA
 \$$1\$
 endsnippet
 
@@ -853,7 +863,7 @@ endsnippet
 
 
 snippet mpack "Math packages" 
-\usepackage{amsmath}
+\usepackage{mathtools}
 \usepackage{amssymb}
 \usepackage{tikz}
 \usepackage{pgfplots}
@@ -882,7 +892,6 @@ snippet al "Automata libraries"
 	every state/.style={thick, fill=gray!10}, % sets the properties for each state node
 	initial text=$ $, % sets the text that appears on the start arrow
 }
-
 endsnippet
 
 
@@ -893,4 +902,10 @@ endsnippet
 
 snippet com "Comment" 
 ---($1)---
+endsnippet
+
+
+snippet new "Redefine command" 
+\renewcommand\\$1{$2}
+\begin{proof}
 endsnippet
