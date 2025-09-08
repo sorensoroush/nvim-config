@@ -39,7 +39,7 @@ let g:netrw_sort_direction = "reverse"
 
 inoremap kj <Esc>
 let mapleader = " "
-set timeoutlen=500
+set timeoutlen=250
 
 nnoremap <Leader>e <Cmd>Ex<CR>
 nnoremap <A-e> <C-w>s<Cmd>Ex<CR>
