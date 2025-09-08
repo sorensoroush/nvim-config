@@ -1,4 +1,6 @@
 "inoremap <expr> <Enter> g:vimtex#syntax#in_mathzone() ? eval(<Plug>(vimtex-cmd-toggle-break)) : eval(<CR>)
+"
+set iskeyword-=:
 
 call vimtex#imaps#add_map({
     \ 'lhs' : ',',
@@ -41,6 +43,11 @@ call vimtex#imaps#add_map({
     \})
 
 call vimtex#imaps#add_map({
+    \ 'lhs' : 'oF',
+    \ 'rhs' : '\mathbb{F}',
+    \})
+
+call vimtex#imaps#add_map({
     \ 'lhs' : 'ou',
     \ 'rhs' : '\cup',
     \})
@@ -53,11 +60,6 @@ call vimtex#imaps#add_map({
 call vimtex#imaps#add_map({
     \ 'lhs' : 'oe',
     \ 'rhs' : '\in',
-    \})
-
-call vimtex#imaps#add_map({
-    \ 'lhs' : 'oE',
-    \ 'rhs' : '\notin',
     \})
 
 call vimtex#imaps#add_map({
@@ -140,4 +142,22 @@ call vimtex#imaps#add_map({
     \ 'rhs' : '\models',
     \})
 
-set iskeyword-=:
+call vimtex#imaps#add_map({
+    \ 'lhs' : 'o1',
+    \ 'rhs' : '\not',
+    \})
+
+call vimtex#imaps#add_map({
+    \ 'lhs' : 'of',
+    \ 'rhs' : '\mathcal{F}',
+    \})
+
+call vimtex#imaps#add_map({
+    \ 'lhs' : 'oc',
+    \ 'rhs' : '\checkmark',
+    \})
+
+call vimtex#imaps#add_map({
+    \ 'lhs' : 'oE',
+    \ 'rhs' : '\ni',
+    \})
