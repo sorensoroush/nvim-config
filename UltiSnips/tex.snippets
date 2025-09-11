@@ -99,7 +99,7 @@ endsnippet
 
 
 snippet tt "Text in math context" "math()" ieA
-\quad \text{$1} \quad 
+${1: \ } \text{$2}$1
 endsnippet
 
 
@@ -279,11 +279,11 @@ snippet mat "Matrix"
 \begin{${1:p}matrix*}[r]
 `!p
 subbed = snip.v.text.lstrip()
-subbed = re.sub("(\w) ", "\g<1> & ", subbed)
+subbed = re.sub("(\S) ", "\g<1> & ", subbed)
 subbed = re.sub("\n", " \\\\\\\\\n\t", subbed)
 snip.rv = "\t" + subbed.rstrip()
 `
-\end{$1matrix}
+\end{$1matrix*}
 endsnippet
 
 
@@ -523,7 +523,7 @@ endsnippet
 
 
 snippet vd "Vector draw" 
-\draw[$1, ->, very thick]
+\draw[$1, ->, very thick] ($2) -- $3 ($4) $5;
 endsnippet
 
 
@@ -571,9 +571,11 @@ snippet hw "Homework template"
 \usepackage{parskip}
 $1
 
+\setcounter{secnumdepth}{-1}
+
 \author{Soren Soroush}
 \title{HW \#$2 \\\\ \small ($3)}
-\date{\today \\\\ \small (last edit)}
+\date{\today}
 
 \begin{document}
 \maketitle
@@ -638,7 +640,7 @@ endsnippet
 
 
 snippet chp "New chapter entry" 
-\chapter{$1}
+\chapter{${1:`date +%-m/%-d/%y`}}
 endsnippet
 
 
@@ -837,7 +839,7 @@ endsnippet
 
 
 snippet pic "Graphic included simply" 
-\includegraphics[width=\textwidth]{../.fig/$1}
+\includegraphics[width=\textwidth]{../.fig/$1.png}
 endsnippet
 
 
@@ -908,4 +910,9 @@ endsnippet
 snippet new "Redefine command" 
 \renewcommand\\$1{$2}
 \begin{proof}
+endsnippet
+
+
+snippet cn "Center" 
+\center{$1}
 endsnippet
