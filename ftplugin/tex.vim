@@ -89,7 +89,7 @@ call vimtex#imaps#add_map({
 
 call vimtex#imaps#add_map({
     \ 'lhs' : 'od',
-    \ 'rhs' : '\mid',
+    \ 'rhs' : '\degree',
     \})
 
 call vimtex#imaps#add_map({
@@ -160,4 +160,10 @@ call vimtex#imaps#add_map({
 call vimtex#imaps#add_map({
     \ 'lhs' : 'oE',
     \ 'rhs' : '\ni',
+    \})
+
+
+call vimtex#imaps#add_map({
+    \ 'lhs' : 'ox',
+    \ 'rhs' : '\approx',
     \})
