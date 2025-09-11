@@ -50,8 +50,8 @@ nnoremap <Leader>q <Cmd>q<CR>
 nnoremap <Leader>Q <Cmd>qall<CR>
 nnoremap <Leader>t <Cmd>let @p = expand('%:h:p')<CR><Cmd>split term://bash<CR><Cmd>put p<CR>a<C-a>cd<Space><CR><C-l>
 nnoremap <A-q> <Cmd>q!<CR>
-nnoremap <Leader>m <Cmd>so $NVIM/session.vim<CR>
-nnoremap <Leader>M <Cmd>mks! $NVIM/session.vim<CR>
+nnoremap <Leader>p <Cmd>so $NVIM/session.vim<CR>
+nnoremap <Leader>P <Cmd>mks! $NVIM/session.vim<CR>
 nnoremap <Leader>o <Cmd>so %<CR>
 nnoremap <Leader>r @:
 nnoremap <Leader>v <C-w>s<Cmd>e $NVIM/ftplugin/%:e.vim<CR>
