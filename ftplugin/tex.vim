@@ -118,7 +118,7 @@ call vimtex#imaps#add_map({
     \})
 
 call vimtex#imaps#add_map({
-    \ 'lhs' : 'os',
+    \ 'lhs' : 'oS',
     \ 'rhs' : '\star',
     \})
 
@@ -162,8 +162,12 @@ call vimtex#imaps#add_map({
     \ 'rhs' : '\ni',
     \})
 
-
 call vimtex#imaps#add_map({
     \ 'lhs' : 'ox',
     \ 'rhs' : '\approx',
+    \})
+
+call vimtex#imaps#add_map({
+    \ 'lhs' : 'v,',
+    \ 'rhs' : '\vdots',
     \})
