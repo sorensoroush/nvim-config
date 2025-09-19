@@ -99,7 +99,7 @@ endsnippet
 
 
 snippet tt "Text in math context" "math()" ieA
-${1: \ } \text{$2}$1
+${1: \ }\text{$2}$1
 endsnippet
 
 
@@ -111,11 +111,9 @@ endsnippet
 
 
 snippet ea "Aligned equation"
-\begin{subequations}
 \begin{align${1:*}}
 	$2
 \end{align$1}
-\end{subequations}
 endsnippet
 
 
@@ -160,12 +158,12 @@ snippet ra "Right arrow (with text)" "math()" ieA
 endsnippet
 
 
-snippet E "Exponent" "math()" ieA
+snippet ee "Exponent" "math()" ieA
 ^{$1}
 endsnippet
 
 
-snippet S "Subscript" "math()" ieA
+snippet ss "Subscript" "math()" ieA
 _{$1}
 endsnippet
 
@@ -250,6 +248,11 @@ snippet ol "Line over characters" "math()" ieA
 endsnippet
 
 
+snippet ul "Line under characters" "math()" ieA
+\underline{$1}
+endsnippet
+
+
 snippet ub "Underbrace" "math()" ieA
 \underbrace{$1}_{$2}
 endsnippet
@@ -297,7 +300,7 @@ snippet vv "Vector" "math()" ieA
 endsnippet
 
 
-snippet ha "Hat" "math()" ieA
+snippet ht "Hat" "math()" ieA
 \hat{$1}
 endsnippet
 
@@ -342,20 +345,36 @@ snippet ab "Absolute value" "math()" ieA
 endsnippet
 
 
-snippet P "Parentheses" "math()" ieA
-($1)
-endsnippet
-
-
-snippet R "Brackets" "math()" ieA
-[$1]
-endsnippet
+#snippet P "Parentheses" "math()" ieA
+#($1)
+#endsnippet
+#
+#
+#snippet R "Brackets" "math()" ieA
+#[$1]
+#endsnippet
 
 
 snippet ov "Overset" "math()" ieA
 \overset{$1}{$2}
 endsnippet
 
+
+snippet nm "Norm" "math()" ieA
+||$1||
+endsnippet
+
+
+snippet us "Underset" "math()" ieA
+\underset{$1}{$2}
+endsnippet
+
+
+snippet pw "Piecewise functions" "math()" ieA
+	\begin{cases}
+		$1
+	\end{cases}
+endsnippet
 
 # --------------------
 #     TikZ snips
@@ -571,6 +590,13 @@ snippet hw "Homework template"
 \usepackage{parskip}
 $1
 
+\usepackage{geometry}
+\geometry{
+	top=50pt,
+	left=50pt,
+	right=50pt,
+	bottom=50pt,
+}
 \setcounter{secnumdepth}{-1}
 
 \author{Soren Soroush}
@@ -649,7 +675,7 @@ snippet se "Section"
 endsnippet
 
 
-snippet sse "Subsection" 
+snippet ss "Subsection" 
 \subsection{$1}
 endsnippet
 
@@ -877,7 +903,7 @@ endsnippet
 
 
 snippet sl "Set length" 
-\setlength{${1:\parindent}}{${2:0pt}}
+\setlength{\\${1:parindent}}{${2:0}pt}
 endsnippet
 
 
@@ -897,8 +923,8 @@ snippet al "Automata libraries"
 endsnippet
 
 
-snippet cla "Claim (theorem template)" 
-\newtheorem${1:*}{${2:claim}}{${3:Claim}}
+snippet nt "New theorem template" 
+\newtheorem${1:*}{${2:claim}}{`!p snip.rv = t[2][0].upper() + t[2][1:]`}
 endsnippet
 
 
@@ -915,4 +941,15 @@ endsnippet
 
 snippet cn "Center" 
 \center{$1}
+endsnippet
+
+
+snippet geo "Geometry package" 
+\usepackage{geometry}
+\geometry{
+	top=${1:50}pt,
+	left=${2:50}pt,
+	right=${3:50}pt,
+	bottom=${4:50}pt,
+}
 endsnippet
