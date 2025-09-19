@@ -97,7 +97,7 @@ snippet com "Multiline comment"
 endsnippet
 
 
-snippet s "Standard library keyword" 
+snippet s "Standard library keyword" i
 std::
 endsnippet
 
@@ -109,4 +109,29 @@ snippet hdr "Header boilerplate"
 $2
 
 #endif // $1
+endsnippet
+
+
+snippet v "Vector" i
+std::vector<$1>
+endsnippet
+
+
+snippet vp "Vector print" 
+for (auto $1:$2)
+	std::cout << $1 << " ";
+std::cout << "$3: ";
+for (auto $1:$4($2))
+	std::cout << $1 << " ";
+std::cout << "\n";
+endsnippet
+
+
+snippet c "cout" 
+std::cout
+endsnippet
+
+
+snippet e "endl" 
+std::endl;
 endsnippet
