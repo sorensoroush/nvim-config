@@ -14,7 +14,7 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 set shiftround
-set iskeyword-=_
+"set iskeyword-=_
 set iskeyword-=:
 set linebreak
 set breakindent
