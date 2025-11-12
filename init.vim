@@ -33,6 +33,8 @@ let g:netrw_liststyle = 1
 let g:netrw_sort_by = "time"
 let g:netrw_sort_direction = "reverse"
 
+set noequalalways
+
 
 "----------------------------------------
 "         Vim Mappings
@@ -63,8 +65,9 @@ nnoremap <Leader>g viwzg
 nnoremap <Leader>G viwzug
 nnoremap <Leader>D <Cmd>vertical diffsplit [diff-file]<CR>
 "nnoremap <A-z> mfmx zathura %<CR>
-nnoremap <A-w> <C-w>s<Cmd>e questions<CR>
+nnoremap <A-w> <C-w>s<Cmd>e questions<CR><C-w>5_
 
+inoremap <A-k> <Esc>2ko<CR>
 
 tnoremap <A-q> <C-\><C-n><Cmd>q<CR>
 

@@ -214,7 +214,7 @@ endsnippet
 
 
 snippet lm "Limit" "math()" ieA
-\lim_{$1\to $2}
+\lim\limits_{$1\to $2}
 endsnippet
 
 
@@ -279,7 +279,7 @@ endsnippet
 
 # p=(), b=[], B={}, v=||, V=||||, small
 snippet mat "Matrix"
-\begin{${1:p}matrix*}[r]
+\begin{${1:b}matrix*}[r]
 `!p
 subbed = snip.v.text.lstrip()
 subbed = re.sub("(\S) ", "\g<1> & ", subbed)
@@ -336,7 +336,7 @@ endsnippet
 
 
 snippet | "Extra whitespace for |" 
-\; | \;
+\; | \; 
 endsnippet
 
 
@@ -345,11 +345,11 @@ snippet ab "Absolute value" "math()" ieA
 endsnippet
 
 
-#snippet P "Parentheses" "math()" ieA
-#($1)
-#endsnippet
-#
-#
+snippet pp "Parentheses" "math()" ieA
+($1)
+endsnippet
+
+
 #snippet R "Brackets" "math()" ieA
 #[$1]
 #endsnippet
@@ -615,7 +615,7 @@ endsnippet
 
 
 snippet pack "Import package" 
-\usepackage{$1}
+\usepackage[$1]{$2}
 endsnippet
 
 
@@ -707,7 +707,7 @@ snippet ol "Ordered List"
 \begin{enumerate}
 `!p
 snip.rv = re.sub('(\s*)(\\\\item)?(\[.+\])?(\s)?(.+)$', '\g<1>\t\\\\item\g<3> \g<5>', snip.v.text.strip(), flags=re.M)
-`	$0
+`	$1
 \end{enumerate}
 endsnippet
 
@@ -717,7 +717,7 @@ snippet ul "Unordered List"
 `!p
 snip.rv = re.sub('(\s*)(\\\\item)?(.+)$', '\g<1>\t\\\\item \g<3>', snip.v.text.strip(), flags=re.M)
 #snip.rv = re.sub('(\s*)(\\\\item)?(\[\w*\])?(.+)$', '\g<1>\t\\\\item\[ \g<4>', snip.v.text.strip(), flags=re.M)
-`
+`	$1
 \end{itemize}
 endsnippet
 
@@ -823,7 +823,7 @@ endsnippet
 
 
 snippet col "Colored text" 
-\textcolor[${1:model}]{${2:color}}{${3:text}}
+\textcolor{${1:color}}{${2:text}}
 endsnippet
 
 
@@ -853,8 +853,8 @@ endsnippet
 
 
 snippet pro "Proof" 
-\begin{proof}
-	$1
+\begin{proof}[${1:Proof}]
+	$2
 \end{proof}
 endsnippet
 
@@ -970,5 +970,56 @@ endsnippet
 
 
 snippet sye "System of equations" 
-\systeme{$1}
+\systeme{
+	$1
+}
+endsnippet
+
+
+snippet mx "Multi-line box"
+\begin{empheq}[box=\fbox]{${1:gather*}}
+	$2
+\end{empheq}
+endsnippet
+
+
+snippet ii "Item (without bullet)" 
+\item[$1] 
+endsnippet
+
+
+snippet "(\d+)ol" "Enumerate with number of items" r
+\begin{enumerate}
+`!p
+n = int(match.group(1))
+ol = "\t\item "
+snip.rv += ol;
+for _ in range(n-1):
+	snip += ol
+`
+\end{enumerate}
+endsnippet
+
+
+snippet def "Definition environment" 
+\begin{definition}
+	$1
+\end{definition}
+endsnippet
+
+
+snippet for "Forest" 
+\begin{forest}
+	$1
+\end{forest}
+endsnippet
+
+snippet v "Variable (forest pack)"
+[$1
+	$2
+]
+endsnippet
+
+snippet t "Variable (forest pack)"
+[$1]
 endsnippet

@@ -171,3 +171,24 @@ call vimtex#imaps#add_map({
     \ 'lhs' : 'v,',
     \ 'rhs' : '\vdots',
     \})
+
+call vimtex#imaps#add_map({
+    \ 'lhs' : 'jm',
+    \ 'rhs' : '\mapsto',
+    \})
+
+call vimtex#imaps#add_map({
+    \ 'lhs' : 'og',
+    \ 'rhs' : '\nabla ',
+    \})
+
+call vimtex#imaps#add_map({
+    \ 'lhs' : 'o-',
+    \ 'rhs' : '\smallsetminus',
+    \})
+
+
+call vimtex#imaps#add_map({
+    \ 'lhs' : 'ov',
+    \ 'rhs' : '\vdash',
+    \}) 
