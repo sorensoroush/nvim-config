@@ -66,6 +66,9 @@ nnoremap <Leader>G viwzug
 nnoremap <Leader>D <Cmd>vertical diffsplit [diff-file]<CR>
 "nnoremap <A-z> mfmx zathura %<CR>
 nnoremap <A-w> <C-w>s<Cmd>e questions<CR><C-w>5_
+nnoremap <A-j> o<Esc>k
+nnoremap <A-k> O<Esc>j
+"nnoremap K kdd
 
 inoremap <A-k> <Esc>2ko<CR>
 
@@ -103,10 +106,16 @@ Plug 'lervag/vimtex'
 Plug 'hat0uma/csvview.nvim'
 "Plug 'triglav/vim-visual-increment'
 Plug 'numirias/semshi'
+Plug 'kiyoon/jupynium.nvim', { 'do': 'pip3 install --user .' }
 
 call plug#end()
 
 lua require('csvview').setup()
+
+"----------------------------------------
+"         Jupynium Settings
+
+
 
 "----------------------------------------
 "         Semshi Settings
