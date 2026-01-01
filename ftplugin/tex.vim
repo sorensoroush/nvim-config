@@ -184,11 +184,35 @@ call vimtex#imaps#add_map({
 
 call vimtex#imaps#add_map({
     \ 'lhs' : 'o-',
-    \ 'rhs' : '\smallsetminus',
+    \ 'rhs' : '\smallsetminus ',
     \})
-
 
 call vimtex#imaps#add_map({
     \ 'lhs' : 'ov',
     \ 'rhs' : '\vdash',
     \}) 
+
+call vimtex#imaps#add_map({
+    \ 'lhs' : 'ol',
+    \ 'rhs' : '\mathcal{L}',
+    \})
+
+call vimtex#imaps#add_map({
+    \ 'lhs' : 'oO',
+    \ 'rhs' : '\circ',
+    \})
+
+call vimtex#imaps#add_map({
+    \ 'lhs' : 'o1',
+    \ 'rhs' : '\mathbb{1}',
+    \})
+
+call vimtex#imaps#add_map({
+    \ 'lhs' : 'o+',
+    \ 'rhs' : '\cong',
+    \})
+
+call vimtex#imaps#add_map({
+    \ 'lhs' : 'oos',
+    \ 'rhs' : '\vartriangleleft',
+    \})
