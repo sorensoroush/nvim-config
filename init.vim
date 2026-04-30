@@ -48,6 +48,7 @@ nnoremap <A-e> <C-w>s<Cmd>Ex<CR>
 nnoremap <Leader>E <Cmd>Ex ~<CR>
 nnoremap <A-n> <C-w>s'N
 nnoremap <Leader>w <Cmd>w<CR>
+nnoremap <Leader>W <Cmd>e<CR>
 nnoremap <Leader>q <Cmd>q<CR>
 nnoremap <Leader>Q <Cmd>qall<CR>
 nnoremap <Leader>t <Cmd>let @p = expand('%:h:p')<CR><Cmd>split term://bash<CR><Cmd>put p<CR>a<C-a>cd<Space><CR><C-l>
@@ -61,16 +62,17 @@ nnoremap <A-f> <C-w>s'F<Cmd>Ex<CR>
 nnoremap <A-t> <C-w>s<C-w>T<Cmd>Ex<CR>
 nnoremap <A-h> <C-w>s'H
 nnoremap <Leader>c <Cmd>setlocal invspell spelllang=en_us<CR>
-nnoremap <Leader>g viwzg
-nnoremap <Leader>G viwzug
+"nnoremap <Leader>g viwzg
+"nnoremap <Leader>G viwzug
 nnoremap <Leader>D <Cmd>vertical diffsplit [diff-file]<CR>
 "nnoremap <A-z> mfmx zathura %<CR>
 nnoremap <A-w> <C-w>s<Cmd>e questions<CR><C-w>5_
 nnoremap <A-j> o<Esc>k
 nnoremap <A-k> O<Esc>j
 "nnoremap K kdd
+nnoremap <Leader>g 'aV'sg<C-g>
 
-inoremap <A-k> <Esc>2ko<CR>
+inoremap <A-k> <Esc>O<Esc>O
 
 tnoremap <A-q> <C-\><C-n><Cmd>q<CR>
 
@@ -115,7 +117,7 @@ lua require('csvview').setup()
 "----------------------------------------
 "         Jupynium Settings
 
-
+nnoremap <A-y> <Cmd>sil !ipynb2jupytext % %:t:r.ju.py<CR><Cmd>e %:t:r.ju.py<CR>
 
 "----------------------------------------
 "         Semshi Settings
@@ -134,6 +136,8 @@ let g:vimtex_quickfix_open_on_warning = 0
 "let g:vimtex_quickfix_ignore_filters = [
 "            \ 'window ID'
 "            \]
+
+let g:vimtex_fold_enabled = 1
 
 nnoremap <LocalLeader>lS <Plug>(vimtex-compile-ss)
 nnoremap <LocalLeader>lh <Cmd>h vimtex-motions<CR>

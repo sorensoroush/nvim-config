@@ -8,7 +8,7 @@ def math():
 endglobal
 
 # --------------------
-# 	Course Snippets
+# 	Template Snippets
 # --------------------
 
 snippet 150ta "Template for a week of TA questions" 
@@ -73,6 +73,140 @@ snippet je "Journal entry for weekly log"
 endsnippet
 
 
+snippet doc "Begin a text document" 
+\documentclass{${1:article}}
+
+\usepackage{parskip}
+\usepackage{hyperref}
+
+\setcounter{secnumdepth}{-1}
+\setcounter{tocdepth}{3}
+
+\hypersetup{
+	colorlinks=true, 
+	linktoc=all,    
+	linkcolor=black
+}
+
+$2
+
+\author{Soren S.}
+\title{$3}
+\date{\today \\\\ \small (last edit)}
+
+\begin{document}
+\maketitle
+% \tableofcontents
+% ---------------
+
+$0
+
+% ---------------
+\end{document}
+endsnippet
+
+
+snippet notes "Notes template" 
+\documentclass{report}
+
+\usepackage{parskip}
+\usepackage{hyperref}
+
+\renewcommand\labelitemi{$\cdot$}
+\renewcommand\labelitemii{$\cdot$}
+
+\setcounter{secnumdepth}{-1}
+\setcounter{tocdepth}{3}
+
+\hypersetup{
+	colorlinks=true, 
+	linktoc=all,    
+	linkcolor=black
+}
+
+$1
+
+\author{Soren S.}
+\title{$2 \\\\ \small $3}
+\date{\today \\\\ \small (last edit) %
+\\\\[4cm]
+%
+\Large
+Disclaimer: \large These notes are not intended as a comprehensive reference. While I try to include as much as I can (and summarize what I don't), a lack of critical omissions is not guaranteed.}
+
+\begin{document}
+\maketitle
+\tableofcontents
+% ---------------
+
+$0
+
+% ---------------
+\end{document}
+endsnippet
+
+
+snippet hw "Homework template (single column to upload)" 
+\documentclass{article}
+
+\usepackage{parskip}
+
+$1
+
+\setcounter{secnumdepth}{-1}
+
+\renewcommand\labelitemi{$\cdot$}
+\renewcommand\labelitemii{$\cdot$}
+
+\author{Soren Soroush}
+\title{HW \#$2 \\\\ \small ($3)}
+\date{\today}
+
+\begin{document}
+\maketitle
+% ---------------
+
+$0
+
+% ---------------
+\end{document}
+endsnippet
+
+
+snippet hw2 "Homework template (double column to print)" 
+\documentclass[twocolumn]{article}
+
+\usepackage{parskip}
+
+$1
+
+\usepackage{geometry}
+\geometry{
+	top=20pt,
+	left=20pt,
+	right=40pt,
+	bottom=40pt,
+}
+\setcounter{secnumdepth}{-1}
+
+\renewcommand\labelitemi{$\cdot$}
+\renewcommand\labelitemii{$\cdot$}
+
+\author{Soren Soroush}
+\title{HW \#$2 \\\\ \small ($3)}
+\date{\today}
+
+\begin{document}
+\maketitle
+% ---------------
+
+$0
+
+% ---------------
+\end{document}
+endsnippet
+
+
 # --------------------
 #     Math snips
 # --------------------
@@ -93,6 +227,11 @@ snippet ff "Fraction" "math()" ieA
 endsnippet
 
 
+snippet tf "Text-size fraction" "math()" ieA
+\tfrac{$1}{$2}
+endsnippet
+
+
 snippet qq "Small space in math context" "math()" ieA
 \quad
 endsnippet
@@ -110,7 +249,7 @@ snippet ee "Equation"
 endsnippet
 
 
-snippet ea "Aligned equation"
+snippet al "Aligned equation"
 \begin{align*}
 	$1
 \end{align*}
@@ -158,7 +297,7 @@ snippet ra "Right arrow (with text)" "math()" ieA
 endsnippet
 
 
-snippet E "Exponent" "math()" ieA
+snippet ee "Exponent" "math()" ieA
 ^{$1}
 endsnippet
 
@@ -168,17 +307,22 @@ _{$1}
 endsnippet
 
 
-snippet bb "Binomial coefficient (combinations/choose)" "math()" ieA
+snippet bin "Binomial coefficient (combinations/choose)" "math()" ieA
 \binom{$1}{$2}
 endsnippet
 
 
-snippet rf "Reference" 
+snippet tb "Text-formatted binomial" "math()" ieA
+\tbinom{$1}{$2}
+endsnippet
+
+
+snippet rf "Reference" i
 \ref{$1}
 endsnippet
 
 
-snippet erf "Equation reference" "math()" ieA
+snippet er "Equation reference"
 \eqref{$1}
 endsnippet
 
@@ -193,7 +337,7 @@ snippet tg "Custom tag for equations" "math()" ieA
 endsnippet
 
 
-snippet lb "Label" 
+snippet lb "Label" "math()" ieA
 \label{$1}
 endsnippet
 
@@ -279,10 +423,10 @@ endsnippet
 
 # p=(), b=[], B={}, v=||, V=||||, small
 snippet mat "Matrix"
-\begin{${1:b}matrix*}[r]
+\begin{${1:p}matrix*}[r]
 `!p
 subbed = snip.v.text.lstrip()
-subbed = re.sub("(\S) ", "\g<1> & ", subbed)
+subbed = re.sub("(\S)  ", "\g<1> & ", subbed)
 subbed = re.sub("\n", " \\\\\\\\\n\t", subbed)
 snip.rv = "\t" + subbed.rstrip()
 `
@@ -327,12 +471,12 @@ endsnippet
 
 
 snippet oo "Union of elements" "math()" ieA
-\bigcup\limits_{$1}^{$2}
+\bigcup_{$1}^{$2}
 endsnippet
 
 
 snippet aa "Intersection of elements" "math()" ieA
-\bigcap\limits_{$1}^{$2}
+\bigcap_{$1}^{$2}
 endsnippet
 
 
@@ -397,6 +541,77 @@ snippet wh "Wide hat" "math()" ieA
 \widehat{$1}
 endsnippet
 
+
+snippet mx "Maximum" "math()" ieA
+\max\limits_{$1}
+endsnippet
+
+
+snippet mn "Minimum" "math()" ieA
+\min\limits_{$1}
+endsnippet
+
+
+snippet sup "Supremum" "math()" ieA
+\sup\limits_{$1}
+endsnippet
+
+
+snippet if "Infinum" "math()" ieA
+\inf\limits_{$1}
+endsnippet
+
+
+snippet gi "Greatest Integer" "math()" ieA
+\bigl[[$1]\bigr]
+endsnippet
+
+
+snippet lg "Log"  "math()" ieA
+\log_{$1}
+endsnippet
+
+
+snippet do "Dot" "math()" ieA
+\dot{$1}
+endsnippet
+
+
+snippet dd "Double dot" "math()" ieA
+\ddot{$1}
+endsnippet
+
+
+snippet "([=<>])" "Spacing for comparison sign" r
+`!p
+snip.rv = "\\ " + match.group(1) + " \\ "
+`
+endsnippet
+
+
+snippet ww "Big Wedge" "math()" ieA
+\bigwedge_{$1}^{$2}
+endsnippet
+
+
+snippet ii "Bracket with comma (interval)" "math()" ieA
+[$1,$2]
+endsnippet
+
+
+snippet bb "Bracket" "math()" ieA
+[$1]
+endsnippet
+
+
+snippet cc "Cancel" "math()" ieA
+\cancel{$1}
+endsnippet
+
+
+
+
+
 # --------------------
 #     TikZ snips
 # --------------------
@@ -419,9 +634,9 @@ snippet c "Cartesian coordinates"
 endsnippet
 
 
-snippet l "Length / Line (for named objects)" 
-($1)
-endsnippet
+#snippet l "Length / Line (for named objects)" 
+#($1)
+#endsnippet
 
 
 snippet p "Polar coordinates" 
@@ -449,7 +664,7 @@ snippet co "Coordinate"
 endsnippet
 
 
-snippet pl "Plot" 
+snippet plt "Plot" 
 plot(\\${1:x}, {$2})
 endsnippet
 
@@ -570,69 +785,6 @@ endsnippet
 # --------------------
 #   Formatting snips
 # --------------------
-
-
-snippet doc "Begin a text document" 
-\documentclass{${1:article}}
-
-\usepackage{parskip}
-\usepackage{hyperref}
-
-\setcounter{secnumdepth}{-1}
-\setcounter{tocdepth}{3}
-
-\hypersetup{
-	colorlinks=true, 
-	linktoc=all,    
-	linkcolor=black
-}
-
-$2
-
-\author{Soren S.}
-\title{$3}
-\date{\today \\\\ \small (last edit)}
-
-\begin{document}
-\maketitle
-% \tableofcontents
-% ---------------
-
-$0
-
-% ---------------
-\end{document}
-endsnippet
-
-
-snippet hw "Homework template" 
-\documentclass[twocolumn]{article}
-
-\usepackage{parskip}
-$1
-
-\usepackage{geometry}
-\geometry{
-	top=20pt,
-	left=20pt,
-	right=40pt,
-	bottom=40pt,
-}
-\setcounter{secnumdepth}{-1}
-
-\author{Soren Soroush}
-\title{HW \#$2 \\\\ \small ($3)}
-\date{\today}
-
-\begin{document}
-\maketitle
-% ---------------
-
-$0
-
-% ---------------
-\end{document}
-endsnippet
 
 
 snippet pack "Import package" 
@@ -914,7 +1066,11 @@ endsnippet
 snippet mpack "Math packages" 
 \usepackage{mathtools}
 \usepackage{amssymb}
-\usepackage{tikz}
+\usepackage{amsthm}
+endsnippet
+
+
+snippet pfgpack "Graphing utilities" 
 \usepackage{pgfplots}
 
 \usetikzlibrary{calc}
@@ -933,7 +1089,7 @@ snippet lid "List item dot"
 endsnippet
 
 
-snippet al "Automata libraries" 
+snippet alib "Automata libraries" 
 \usetikzlibrary{automata, positioning, arrows}
 \tikzset{->, % makes the edges directed
 	>=stealth, % makes the arrow heads bold
@@ -964,8 +1120,15 @@ snippet new "Redefine command"
 endsnippet
 
 
-snippet cn "Center" 
+snippet cn "Center command" 
 \center{$1}
+endsnippet
+
+
+snippet cen "Center environment" 
+\begin{center}
+	$0
+\end{center}
 endsnippet
 
 
@@ -1009,7 +1172,20 @@ snippet ii "Item (without bullet)"
 endsnippet
 
 
-snippet "(\d+)ol" "Enumerate with number of items" r
+snippet "(\d+)ul" "Unordered list with number of items" r
+\begin{itemize}
+`!p
+n = int(match.group(1))
+ol = "\t\item "
+snip.rv += ol;
+for _ in range(n-1):
+	snip += ol
+`
+\end{itemize}
+endsnippet
+
+
+snippet "(\d+)ol" "Ordered list with number of items" r
 \begin{enumerate}
 `!p
 n = int(match.group(1))
@@ -1036,18 +1212,76 @@ snippet for "Forest"
 endsnippet
 
 
-snippet v "Variable (forest pack)"
+snippet b "Branch (forest pack)"
 [{$1}$2
 	$3
 ]
 endsnippet
 
 
-snippet t "Variable (forest pack)"
+snippet bc "Branch with circle"
+[{$1},circle,draw$2
+	$3
+]
+endsnippet
+
+
+snippet l "Leaf (forest pack)"
 [{$1}$2]
+endsnippet
+
+
+snippet lc "Leaf with circle"
+[{$1},circle,draw$2]
+endsnippet
+
+
+snippet pl "Phantom leaf"
+[,phantom]
+endsnippet
+
+
+snippet tcd "Tree circle draw" 
+for tree={circle, draw, minimum size=1.5em, inner sep=1pt}
+endsnippet
+
+
+snippet tar "Tree arrow right" 
+{\huge $\quad\rightarrow \quad$ \normalsize}
+endsnippet
+
+
+snippet tpt "Tree plus tree" 
+{\huge $\quad + \quad$ \normalsize}
+endsnippet
+
+
+snippet tad "Tree arrow down" 
+%
+\\\\[0.4cm]
+%
+{\huge $\downarrow$ \normalsize}
+%
+\\\\[0.4cm]
+%
 endsnippet
 
 
 snippet el "Edge label (forest pack)" i
 ,edge label={node[midway,${1:(l)eft,(r)ight}`!p snip.rv = "eft" if t[1] == "l" else "ight" if t[1] == "r" else "";`,font=\tiny]{$2}}
+endsnippet
+
+
+snippet bib "Bibliography" 
+\printbibliography
+endsnippet
+
+
+snippet ci "Cite" 
+\cite{$1}
+endsnippet
+
+
+snippet tt "Monospace font (teletype)" i
+\texttt{$1}
 endsnippet

@@ -79,7 +79,7 @@ call vimtex#imaps#add_map({
 
 call vimtex#imaps#add_map({
     \ 'lhs' : 'op',
-    \ 'rhs' : '\prec',
+    \ 'rhs' : '\mathcal{P}',
     \})
 
 call vimtex#imaps#add_map({
@@ -98,8 +98,8 @@ call vimtex#imaps#add_map({
     \})
 
 call vimtex#imaps#add_map({
-    \ 'lhs' : 'oor',
-    \ 'rhs' : '\vee',
+    \ 'lhs' : 'or',
+    \ 'rhs' : '\vee ',
     \})
 
 call vimtex#imaps#add_map({
@@ -184,7 +184,7 @@ call vimtex#imaps#add_map({
 
 call vimtex#imaps#add_map({
     \ 'lhs' : 'o-',
-    \ 'rhs' : '\smallsetminus ',
+    \ 'rhs' : '\setminus ',
     \})
 
 call vimtex#imaps#add_map({
@@ -215,4 +215,9 @@ call vimtex#imaps#add_map({
 call vimtex#imaps#add_map({
     \ 'lhs' : 'oos',
     \ 'rhs' : '\vartriangleleft',
+    \})
+
+call vimtex#imaps#add_map({
+    \ 'lhs' : 'jf',
+    \ 'rhs' : '\iff ',
     \})
